@@ -4,9 +4,10 @@ stdenv.mkDerivation rec {
   name = "libKoreC";
   src = ./.;
 
-  buildInputs = [];
+  # May not need all these, or only subset?
+  buildInputs = [alsaLib mesa xlibs xorg];
 
-  # sourceRoot = ".";
+  sourceRoot = "./Sources";
 
   installPhase = ''
     mkdir -p $out/lib
