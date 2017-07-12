@@ -1,17 +1,43 @@
-{ stdenv, lib, alsaLib, mesa, xlibs, xorg, kore}:
+{ stdenv, lib, alsaLib, mesa, xorg, nodejs-slim, kore}:
 
 stdenv.mkDerivation rec {
   name = "libKoreC";
   src = ./.;
 
-  # May not need all these, or only subset?
-  buildInputs = [alsaLib mesa xlibs xorg];
+  # LIB=-static-libgcc -static-libstdc++ -pthread -lasound -ldl -lGL -lX11 -lXinerama
+  nativeBuildInputs = [
+    alsaLib
+    mesa
+    xorg.libX11
+    xorg.libXinerama
+    nodejs-slim
+    kore
+  ];
 
-  sourceRoot = "./Sources";
+  # Generate the Kore project files based on the source's koremake file
+  postUnpack = ''
+    cd ./KoreC
+    ln -s ${kore} Kore
+    node Kore/make.js
+    cd ..
+  '';
 
+  # Patch the generated makefile to compile with -fpic and -shared, etc.
+  patchPhase = ''
+    cd ./KoreC/build/Release
+    # ...
+  '';
+
+  buildPhase = ''
+    cd ./KoreC/build/Release
+    make
+  ''
+
+  # Copy generate shared library to $out/lib
   installPhase = ''
     mkdir -p $out/lib
     mkdir -p $out/include
+    # ...
   '';
 
   # postFixup = lib.optionalString (stdenv.system == "i686-linux" || stdenv.system == "x86_64-linux") ''
