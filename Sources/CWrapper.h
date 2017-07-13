@@ -86,7 +86,8 @@ void Kore_System_start();
 /**** Random ****/
 
 // Kore::Random::init -0
-void Kore_Random_init(int seed);
+// void Kore_Random_init(int seed);
+void Kore_Random_init();
 
 /****************/
 /**** Graphics4 ****/

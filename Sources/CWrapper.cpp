@@ -7,6 +7,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <assert.h>
+#include <limits>
 
 #include "CWrapper.h"
 
@@ -124,8 +125,10 @@ void Kore_System_start() {
 /**** Random ****/
 
 // Kore::Random::init
-void Kore_Random_init(int seed) {
-  Kore::Random::init(seed);
+// void Kore_Random_init(int seed) {
+void Kore_Random_init() {
+  // Kore::Random::init(seed);
+  Kore::Random::init(static_cast<int>(Kore::System::timestamp() % std::numeric_limits<int>::max()));
 }
 
 /****************/
