@@ -1,9 +1,12 @@
+#include <Kore/pch.h>
 #include <Kore/Window.h>
 #include <Kore/System.h>
 #include <Kore/Math/Random.h>
 #include <Kore/Graphics4/Graphics.h>
 
 #include <string.h>
+#include <stdlib.h>
+#include <assert.h>
 
 #include "CWrapper.h"
 
@@ -11,16 +14,15 @@
   Guard against enum changes.
 */
 
-// Kore::WindowMode assertions
-_Static_assert(sizeof(W_Kore_WindowMode) == sizeof(Kore::WindowMode),
-  "Size of enum Kore::WindowMode changed.");
-_Static_assert(W_WindowModeWindow == WindowModeWindow);
-_Static_assert(W_WindowModeBorderless == WindowModeBorderless);
-_Static_assert(W_WindowModeFullscreen == WindowModeFullscreen);
-
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+// Kore::WindowMode assertions
+static_assert(sizeof(W_Kore_WindowMode) == sizeof(Kore::WindowMode), "Size of enum Kore::WindowMode changed.");
+static_assert(W_WindowModeWindow == Kore::WindowModeWindow, "Kore::WindowModeWindow enum value changed.");
+static_assert(W_WindowModeBorderless == Kore::WindowModeBorderless, "Kore::WindowModeBorderless enum value changed.");
+static_assert(W_WindowModeFullscreen == Kore::WindowModeFullscreen, "WindowModeFullscreen enum value changed.");
 
 /**** Window ****/
 
@@ -38,12 +40,12 @@ void Kore_WindowOptions_default(W_Kore_WindowOptions* wo) {
 	wo->x = -1;
   wo->y = -1;
 	wo->targetDisplay = -1;
-	wo->vSync = true
+	wo->vSync = true;
 	wo->resizable = false;
 	wo->maximizable = false;
   wo->minimizable = true;
 	wo->mode = W_WindowModeWindow;
-	wo->showWindow = true
+	wo->showWindow = true;
 	wo->rendererOptions.antialiasing = 0;
 }
 
@@ -79,8 +81,7 @@ int Kore_System_initWindow(W_Kore_WindowOptions* options) {
   Kore::WindowOptions windowOptions;
   Kore::RendererOptions rendererOptions;
 
-  windowOptions.title = malloc(strlen(options->title) + 1);
-  strcpy(windowOptions.title, options->title);
+  windowOptions.title = options->title;
   windowOptions.width = options->width;
   windowOptions.height = options->height;
   windowOptions.x = options->x;

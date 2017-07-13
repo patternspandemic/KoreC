@@ -14,36 +14,34 @@ stdenv.mkDerivation rec {
     kore
   ];
 
-  # Generate the Kore project files based on the source's koremake file
   postUnpack = ''
-    cd ./KoreC
-    ln -s ${kore} Kore
-    node Kore/make.js
-    cd ..
-  '';
+    cd ./KoreC/
 
-  # Patch the generated makefile to compile with -fpic and -shared, etc.
-  patchPhase = ''
-    cd ./KoreC/build/Release
-    # ...
+    # Symlink in the Kore framework
+    ln -s ${kore} Kore
+
+    # Generate the Kore project files based on the source's koremake file
+    node Kore/make.js
+
+    # Patch the generated makefile to compile with -fpic and -shared, etc.
+    cd ./build/Release/
+    substituteInPlace makefile \
+      --replace " -c " " -fpic -c " \
+      --replace "-o \"KoreC\"" "-shared -o libkorec.so" \
+      --replace "-o cwrapper.o" "-o cwrapper.o -std=c++11"
+
+    cd ../../../
   '';
 
   buildPhase = ''
-    cd ./KoreC/build/Release
-    make
-  ''
-
-  # Copy generate shared library to $out/lib
-  installPhase = ''
-    mkdir -p $out/lib
-    mkdir -p $out/include
-    # ...
+    make -C ./build/Release
   '';
 
-  # postFixup = lib.optionalString (stdenv.system == "i686-linux" || stdenv.system == "x86_64-linux") ''
-  #   substituteInPlace $out/resources/app/extensions/kha/Kha/Tools/khamake/node_modules/fs-extra/lib/copy-sync/copy-file-sync.js --replace "stat.mode" "33188"
-  #   substituteInPlace $out/resources/app/extensions/kha/Kha/Kore/Tools/koremake/node_modules/fs-extra/lib/copy-sync/copy-file-sync.js --replace "stat.mode" "33188"
-  # '';
+  installPhase = ''
+    # Copy the shared library to $out/lib
+    mkdir -p $out/lib
+    cp ./build/Release/libkorec.so $out/lib
+  '';
 
   meta = with stdenv.lib; {
     description = "Shared library wrapping Kode's Kore framework";
