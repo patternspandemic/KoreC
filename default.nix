@@ -16,12 +16,23 @@ stdenv.mkDerivation rec {
 
   postUnpack = ''
     cd ./KoreC/
+    mkdir Kore
 
-    # Symlink in the Kore framework
-    ln -s ${kore} Kore
+    # Copy in the Kore framework
+    cp -r ${kore}/* ./Kore
 
     # Generate the Kore project files based on the source's koremake file
     node Kore/make.js
+
+    # Remove main(int, char**) and kore(int, char**) from the Linux backend
+    cd ./Kore/Backends/System/Linux/Sources/Kore/
+    chmod +w System.cpp
+    substituteInPlace System.cpp \
+      --replace "extern int kore(int argc, char** argv);" "" \
+      --replace "int main(int argc, char** argv) {
+	kore(argc, argv);
+}" ""
+    cd ../../../../../../
 
     # Patch the generated makefile to compile with -fpic and -shared, etc.
     cd ./build/Release/
@@ -29,7 +40,6 @@ stdenv.mkDerivation rec {
       --replace " -c " " -fpic -c " \
       --replace "-o \"KoreC\"" "-shared -o libkorec.so" \
       --replace "-o cwrapper.o" "-o cwrapper.o -std=c++11"
-
     cd ../../../
   '';
 

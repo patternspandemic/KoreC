@@ -11,13 +11,13 @@
 
 #include "CWrapper.h"
 
-/*
-  Guard against enum changes.
-*/
-
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+/*
+  Guard against enum changes.
+*/
 
 // Kore::WindowMode assertions
 static_assert(sizeof(W_Kore_WindowMode) == sizeof(Kore::WindowMode), "Size of enum Kore::WindowMode changed.");
