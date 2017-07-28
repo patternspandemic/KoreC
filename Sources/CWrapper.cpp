@@ -2,7 +2,7 @@
 #include <Kore/Window.h>
 #include <Kore/System.h>
 #include <Kore/Math/Random.h>
-#include <Kore/Graphics4/Graphics.h>
+// #include <Kore/Graphics4/Graphics.h>
 
 #include <string.h>
 #include <stdlib.h>
@@ -133,7 +133,7 @@ void Kore_Random_init() {
 
 /****************/
 /**** Graphics4 ****/
-
+/*
 void Kore_Graphics4_begin(int windowId) {
   Kore::Graphics4::begin(windowId);
 }
@@ -149,7 +149,7 @@ void Kore_Graphics4_end(int windowId) {
 void Kore_Graphics4_swapBuffers(int windowId) {
   Kore::Graphics4::swapBuffers(windowId);
 }
-
+*/
 /*******************/
 
 #ifdef __cplusplus
