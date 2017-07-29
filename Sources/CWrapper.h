@@ -1,6 +1,7 @@
 #include <Kore/pch.h>
 
 /**** Kore namespaced types ****/
+
 typedef unsigned char u8;   // 1 Byte
 typedef unsigned short u16; // 2 Byte
 typedef unsigned int u32; // 4 Byte

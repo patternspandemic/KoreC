@@ -1,11 +1,6 @@
 #include <Kore/pch.h>
 #include <Kore/Graphics4/Graphics.h>
 
-// #include <string.h>
-// #include <stdlib.h>
-// #include <assert.h>
-// #include <limits>
-
 #include "../CWrapper.h"
 
 #ifdef __cplusplus

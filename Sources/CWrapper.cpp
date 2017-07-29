@@ -1,32 +1,32 @@
-#include <Kore/pch.h>
-#include <Kore/Window.h>
-#include <Kore/System.h>
-#include <Kore/Math/Random.h>
+// #include <Kore/pch.h>
+// #include <Kore/Window.h>
+// #include <Kore/System.h>
+// #include <Kore/Math/Random.h>
 // #include <Kore/Graphics4/Graphics.h>
 
-#include <string.h>
-#include <stdlib.h>
-#include <assert.h>
-#include <limits>
+// #include <string.h>
+// #include <stdlib.h>
+// #include <assert.h>
+// #include <limits>
 
-#include "CWrapper.h"
+// #include "CWrapper.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+// #ifdef __cplusplus
+// extern "C" {
+// #endif
 
 /*
   Guard against enum changes.
 */
-
+/*
 // Kore::WindowMode assertions
 static_assert(sizeof(W_Kore_WindowMode) == sizeof(Kore::WindowMode), "Size of enum Kore::WindowMode changed.");
 static_assert(W_WindowModeWindow == Kore::WindowModeWindow, "Kore::WindowModeWindow enum value changed.");
 static_assert(W_WindowModeBorderless == Kore::WindowModeBorderless, "Kore::WindowModeBorderless enum value changed.");
 static_assert(W_WindowModeFullscreen == Kore::WindowModeFullscreen, "WindowModeFullscreen enum value changed.");
-
+*/
 /**** Window ****/
-
+/*
 void Kore_RendererOptions_default(W_Kore_RendererOptions* ro) {
   ro->textureFormat = 0;
 	ro->depthBufferBits = 16;
@@ -49,10 +49,10 @@ void Kore_WindowOptions_default(W_Kore_WindowOptions* wo) {
 	wo->showWindow = true;
 	wo->rendererOptions.antialiasing = 0;
 }
-
+*/
 /****************/
 /**** System ****/
-
+/*
 // // Kore::System::simpleSetup
 // int Kore_System_simpleSetup(int argc, char* argv[], int width, int height, 
 //                             int antialiasing, W_Kore_WindowMode mode, 
@@ -120,17 +120,17 @@ void Kore_System_start() {
 // Kore::System::windowHeight
 // Kore::System::time
 // Kore::System::stop
-
+*/
 /****************/
 /**** Random ****/
-
+/*
 // Kore::Random::init
 // void Kore_Random_init(int seed) {
 void Kore_Random_init() {
   // Kore::Random::init(seed);
   Kore::Random::init(static_cast<int>(Kore::System::timestamp() % std::numeric_limits<int>::max()));
 }
-
+*/
 /****************/
 /**** Graphics4 ****/
 /*
@@ -152,6 +152,6 @@ void Kore_Graphics4_swapBuffers(int windowId) {
 */
 /*******************/
 
-#ifdef __cplusplus
-}
-#endif
+// #ifdef __cplusplus
+// }
+// #endif
