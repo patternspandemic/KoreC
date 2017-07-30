@@ -148,8 +148,7 @@ void Kore_System_setResumeCallback(void (*value)());
 void Kore_System_setPauseCallback(void (*value)());
 void Kore_System_setBackgroundCallback(void (*value)());
 void Kore_System_setShutdownCallback(void (*value)());
-// TODO: How to switch W_Kore_Orientation to Kore::Orientation for Kore::System::setOrientationCallback?
-// void Kore_System_setOrientationCallback(void (*value)(W_Kore_Orientation));
+void Kore_System_setOrientationCallback(void (*value)(W_Kore_Orientation));
 void Kore_System_setDropFilesCallback(void (*value)(wchar_t*));
 void Kore_System_setKeepScreenOn(bool on);
 

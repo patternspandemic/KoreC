@@ -39,7 +39,8 @@ stdenv.mkDerivation rec {
     substituteInPlace makefile \
       --replace " -c " " -fpic -c " \
       --replace "-o \"KoreC\"" "-shared -o libkorec.so" \
-      --replace "-o window_wrapped.o" "-o window_wrapped.o -std=c++11"
+      --replace "-o window_wrapped.o" "-o window_wrapped.o -std=c++11" \
+      --replace "-o system_wrapped.o" "-o system_wrapped.o -std=c++11"
     cd ../../../
   '';
 

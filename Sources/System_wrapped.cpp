@@ -3,7 +3,31 @@
 #include <Kore/Window.h>
 #include <Kore/System.h>
 
+#include <assert.h>
+
 #include "CWrapper.h"
+
+/*
+  Guard against enum changes.
+*/
+
+// Kore::Orientation assertions
+static_assert(sizeof(W_Kore_Orientation) == sizeof(Kore::Orientation), "Size of enum Kore::Orientation changed.");
+static_assert(W_OrientationLandscapeLeft == Kore::OrientationLandscapeLeft, "Kore::OrientationLandscapeLeft enum value changed.");
+static_assert(W_OrientationLandscapeRight == Kore::OrientationLandscapeRight, "Kore::OrientationLandscapeRight enum value changed.");
+static_assert(W_OrientationPortrait == Kore::OrientationPortrait, "Kore::OrientationPortrait enum value changed.");
+static_assert(W_OrientationUnknown == Kore::OrientationUnknown, "Kore::OrientationUnknown enum value changed.");
+
+
+// We need to wrap the callback presented to 
+// Kore::System::setOrientationCallback to facilitate translation between
+// W_Kore_Orientation enum and its original namespaced Kore::Orientation.
+typedef void (*WRAPPED_SETORIENTATIONCALLBACK)(W_Kore_Orientation);
+static WRAPPED_SETORIENTATIONCALLBACK wrapped_setOrientationCallback;
+// The wrapping function that does the translation.
+static void setOrientationCallback_translator(Kore::Orientation orientation) {
+	wrapped_setOrientationCallback((W_Kore_Orientation)orientation);
+}
 
 #ifdef __cplusplus
 extern "C" {
@@ -217,11 +241,13 @@ void Kore_System_setShutdownCallback(void (*value)()) {
 	Kore::System::setShutdownCallback(value);
 }
 
-// TODO: How to switch `void (*value)(W_Kore_Orientation)` to
-// `void (*value)(Kore::Orientation)`?
-// void Kore_System_setOrientationCallback(void (*value)(W_Kore_Orientation)) {
-// 	Kore::System::setOrientationCallback(value);
-// }
+void Kore_System_setOrientationCallback(void (*value)(W_Kore_Orientation)) {
+	// Store the callback and use another function in its place to translate
+	// between the enum values of Kore::Orientation and its wrapping as defined
+	// by W_Kore_Orientation.
+	wrapped_setOrientationCallback = value;
+	Kore::System::setOrientationCallback(setOrientationCallback_translator);
+}
 
 void Kore_System_setDropFilesCallback(void (*value)(wchar_t*)) {
 	Kore::System::setDropFilesCallback(value);

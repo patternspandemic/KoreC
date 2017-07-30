@@ -17,7 +17,7 @@ extern "C" {
 static_assert(sizeof(W_Kore_WindowMode) == sizeof(Kore::WindowMode), "Size of enum Kore::WindowMode changed.");
 static_assert(W_WindowModeWindow == Kore::WindowModeWindow, "Kore::WindowModeWindow enum value changed.");
 static_assert(W_WindowModeBorderless == Kore::WindowModeBorderless, "Kore::WindowModeBorderless enum value changed.");
-static_assert(W_WindowModeFullscreen == Kore::WindowModeFullscreen, "WindowModeFullscreen enum value changed.");
+static_assert(W_WindowModeFullscreen == Kore::WindowModeFullscreen, "Kore::WindowModeFullscreen enum value changed.");
 
 void Kore_RendererOptions_default(W_Kore_RendererOptions* ro) {
   ro->textureFormat = 0;
