@@ -32,6 +32,10 @@ typedef s32 sint; // 4 Byte
 extern "C" {
 #endif
 
+
+
+
+
 /**** Window ****/
 
 // Kore::RendererOptions
@@ -73,6 +77,11 @@ typedef struct W_Kore_WindowOptions {
 void Kore_WindowOptions_default(W_Kore_WindowOptions* wo);
 
 /****************/
+
+
+
+
+
 /**** System ****/
 
 typedef unsigned long long ticks;
@@ -162,6 +171,11 @@ void Kore_System_orientationCallback(W_Kore_Orientation orientation);
 void Kore_System_dropFilesCallback(wchar_t* filePath);
 
 /****************/
+
+
+
+
+
 /**** Random ****/
 
 // Kore::Random::init -0
@@ -169,14 +183,102 @@ void Kore_System_dropFilesCallback(wchar_t* filePath);
 void Kore_Random_init();
 
 /****************/
+
+
+
+
+
+/**** Graphics1 ****/
+
+// Enums:
+//   Kore::Graphics1::ImageCompression
+//   Kore::Graphics1::Image::Format
+
+// Classes:
+//   Kore::Graphics1::Color
+//   Kore::Graphics1::Image
+
+/*******************/
+
+
+
+
+
+/**** Graphics2 ****/
+
+// Enums:
+//   Kore::Graphics2::ImageScaleQuality
+
+// Classes:
+//   Kore::Graphics2::Color? typedef'd from Kore::Graphics1::Color
+//   Kore::Graphics2::Graphics2
+//   Kore::Graphics2::ImageShaderPainter
+//   Kore::Graphics2::ColoredShaderPainter
+//   Kore::Graphics2::TextShaderPainter
+//   Kore::Kravur stuff? see graphics2 Kravur.h
+
+/*******************/
+
+
+
+
+
 /**** Graphics4 ****/
 
+// Enums:
+//   Graphics.h
+//     Kore::Graphics4::TextureAddressing
+//     Kore::Graphics4::TextureFilter
+//     Kore::Graphics4::MipmapFilter
+//     Kore::Graphics4::RenderState
+//     Kore::Graphics4::BlendingOperation
+//     Kore::Graphics4::ZCompareMode
+//     Kore::Graphics4::CullMode
+//     Kore::Graphics4::TexDir
+//     Kore::Graphics4::FogType
+//     Kore::Graphics4::RenderTargetFormat
+//     Kore::Graphics4::StencilAction
+//     Kore::Graphics4::TextureOperation
+//     Kore::Graphics4::TextureArgument
+//   Shader.h
+//     Kore::Graphics4::ShaderType
+//   VertexStructure.h
+//     Kore::Graphics4::VertexData
+//     Kore::Graphics4::VertexAttribute
+
+// Classes:
+//   Graphics.h
+//     Kore::Graphics4::PipelineState
+//     Kore::Graphics4::TextureArray
+//     Kore::Graphics4::VertexBuffer
+//     Kore::Graphics4::IndexBuffer
+//     Kore::Graphics4::RenderTarget
+//   PipelineState.h
+//     Kore::Graphics4::PipelineState
+//   Shader.h
+//     Kore::Graphics4::Shader
+//     Kore::Graphics4::ConstantLocation
+//   Texture.h
+//     Kore::Graphics4::Image? typedef'd from Kore::Graphics1::Image
+//     Kore::Graphics4::TextureUnit
+//     Kore::Graphics4::Texture
+//   TextureArray.h
+//     Kore::Graphics4::TextureArray
+//   VertexStructure.h
+//     Kore::Graphics4::VertexElement
+//     Kore::Graphics4::VertexStructure
+
+// Functions:
 void Kore_Graphics4_begin(int windowId);
 void Kore_Graphics4_clear(uint flags, uint color, float depth, int stencil);
 void Kore_Graphics4_end(int windowId);
 void Kore_Graphics4_swapBuffers(int windowId);
 
 /*******************/
+
+
+
+
 
 #ifdef __cplusplus
 }
