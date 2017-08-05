@@ -39,26 +39,26 @@ extern "C" {
 /**** Window ****/
 
 // Kore::RendererOptions
-struct W_Kore_RendererOptions;
-typedef struct W_Kore_RendererOptions {
+struct WS_Kore_RendererOptions;
+typedef struct WS_Kore_RendererOptions {
 	int textureFormat;
 	int depthBufferBits;
 	int stencilBufferBits;
 	int antialiasing;
-} W_Kore_RendererOptions;
+} WS_Kore_RendererOptions;
 
-void Kore_RendererOptions_default(W_Kore_RendererOptions* ro);
+void Kore_RendererOptions_default(WS_Kore_RendererOptions* ro);
 
 // Kore::WindowMode
-typedef enum W_Kore_WindowMode {
-	W_WindowModeWindow = 0,
-	W_WindowModeBorderless = 1,
-	W_WindowModeFullscreen = 2,
-} W_Kore_WindowMode;
+typedef enum WE_Kore_WindowMode {
+	WE_WindowModeWindow = 0,
+	WE_WindowModeBorderless = 1,
+	WE_WindowModeFullscreen = 2,
+} WE_Kore_WindowMode;
 
 // Kore::WindowOptions
-struct W_Kore_WindowOptions;
-typedef struct W_Kore_WindowOptions {
+struct WS_Kore_WindowOptions;
+typedef struct WS_Kore_WindowOptions {
 	const char* title;
 	int width;
 	int height;
@@ -69,12 +69,12 @@ typedef struct W_Kore_WindowOptions {
 	bool resizable;
 	bool maximizable;
 	bool minimizable;
-	W_Kore_WindowMode mode;
+	WE_Kore_WindowMode mode;
 	bool showWindow;
-	W_Kore_RendererOptions rendererOptions;
-} W_Kore_WindowOptions;
+	WS_Kore_RendererOptions rendererOptions;
+} WS_Kore_WindowOptions;
 
-void Kore_WindowOptions_default(W_Kore_WindowOptions* wo);
+void Kore_WindowOptions_default(WS_Kore_WindowOptions* wo);
 
 /****************/
 
@@ -87,19 +87,19 @@ void Kore_WindowOptions_default(W_Kore_WindowOptions* wo);
 typedef unsigned long long ticks;
 
 // Kore::Orientation
-typedef enum W_Kore_Orientation {
-	W_OrientationLandscapeLeft = 0,
-	W_OrientationLandscapeRight = 1,
-	W_OrientationPortrait = 2,
-	W_OrientationPortraitUpsideDown = 3,
-	W_OrientationUnknown = 4,
-} W_Kore_Orientation;
+typedef enum WE_Kore_Orientation {
+	WE_OrientationLandscapeLeft = 0,
+	WE_OrientationLandscapeRight = 1,
+	WE_OrientationPortrait = 2,
+	WE_OrientationPortraitUpsideDown = 3,
+	WE_OrientationUnknown = 4,
+} WE_Kore_Orientation;
 
 void Kore_System_init(const char* name, int width, int height);
 
 int Kore_System_currentDevice();
 
-int Kore_System_initWindow(W_Kore_WindowOptions* options);
+int Kore_System_initWindow(WS_Kore_WindowOptions* options);
 void Kore_System_destroyWindow(int id);
 void* Kore_System_windowHandle(int windowId);
 int Kore_System_windowWidth(int id);
@@ -141,7 +141,7 @@ void Kore_System_setShowWindowFlag(bool value);
 int Kore_System_simpleSetup(int argc, char* argv[],
 							int width, int height,
 							int antialiasing,
-							W_Kore_WindowMode mode,
+							WE_Kore_WindowMode mode,
 							const char* title,
 							bool showWindow);
 
@@ -157,7 +157,7 @@ void Kore_System_setResumeCallback(void (*value)());
 void Kore_System_setPauseCallback(void (*value)());
 void Kore_System_setBackgroundCallback(void (*value)());
 void Kore_System_setShutdownCallback(void (*value)());
-void Kore_System_setOrientationCallback(void (*value)(W_Kore_Orientation));
+void Kore_System_setOrientationCallback(void (*value)(WE_Kore_Orientation));
 void Kore_System_setDropFilesCallback(void (*value)(wchar_t*));
 void Kore_System_setKeepScreenOn(bool on);
 
@@ -167,7 +167,7 @@ void Kore_System_resumeCallback();
 void Kore_System_pauseCallback();
 void Kore_System_backgroundCallback();
 void Kore_System_shutdownCallback();
-void Kore_System_orientationCallback(W_Kore_Orientation orientation);
+void Kore_System_orientationCallback(WE_Kore_Orientation orientation);
 void Kore_System_dropFilesCallback(wchar_t* filePath);
 
 /****************/
@@ -195,7 +195,14 @@ void Kore_Random_init();
 //   Kore::Graphics1::Image::Format
 
 // Classes:
+
 //   Kore::Graphics1::Color
+struct	WC_Kore_Graphics1_Color;
+typedef	struct WC_Kore_Graphics1_Color WC_Kore_Graphics1_Color;
+
+WC_Kore_Graphics1_Color* Kore_Graphics1_Color_create(uint color);
+
+
 //   Kore::Graphics1::Image
 
 /*******************/

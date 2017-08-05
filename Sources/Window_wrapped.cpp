@@ -14,19 +14,19 @@ extern "C" {
 */
 
 // Kore::WindowMode assertions
-static_assert(sizeof(W_Kore_WindowMode) == sizeof(Kore::WindowMode), "Size of enum Kore::WindowMode changed.");
-static_assert(W_WindowModeWindow == Kore::WindowModeWindow, "Kore::WindowModeWindow enum value changed.");
-static_assert(W_WindowModeBorderless == Kore::WindowModeBorderless, "Kore::WindowModeBorderless enum value changed.");
-static_assert(W_WindowModeFullscreen == Kore::WindowModeFullscreen, "Kore::WindowModeFullscreen enum value changed.");
+static_assert(sizeof(WE_Kore_WindowMode) == sizeof(Kore::WindowMode), "Size of enum Kore::WindowMode changed.");
+static_assert(WE_WindowModeWindow == Kore::WindowModeWindow, "Kore::WindowModeWindow enum value changed.");
+static_assert(WE_WindowModeBorderless == Kore::WindowModeBorderless, "Kore::WindowModeBorderless enum value changed.");
+static_assert(WE_WindowModeFullscreen == Kore::WindowModeFullscreen, "Kore::WindowModeFullscreen enum value changed.");
 
-void Kore_RendererOptions_default(W_Kore_RendererOptions* ro) {
+void Kore_RendererOptions_default(WS_Kore_RendererOptions* ro) {
   ro->textureFormat = 0;
 	ro->depthBufferBits = 16;
 	ro->stencilBufferBits = 8;
   ro->antialiasing = 0;
 }
 
-void Kore_WindowOptions_default(W_Kore_WindowOptions* wo) {
+void Kore_WindowOptions_default(WS_Kore_WindowOptions* wo) {
   wo->title = "KoreWindow";
 	wo->width = 800;
 	wo->height = 600;
@@ -37,7 +37,7 @@ void Kore_WindowOptions_default(W_Kore_WindowOptions* wo) {
 	wo->resizable = false;
 	wo->maximizable = false;
   wo->minimizable = true;
-	wo->mode = W_WindowModeWindow;
+	wo->mode = WE_WindowModeWindow;
 	wo->showWindow = true;
 	wo->rendererOptions.antialiasing = 0;
 }

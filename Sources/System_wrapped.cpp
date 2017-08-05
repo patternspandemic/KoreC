@@ -12,21 +12,21 @@
 */
 
 // Kore::Orientation assertions
-static_assert(sizeof(W_Kore_Orientation) == sizeof(Kore::Orientation), "Size of enum Kore::Orientation changed.");
-static_assert(W_OrientationLandscapeLeft == Kore::OrientationLandscapeLeft, "Kore::OrientationLandscapeLeft enum value changed.");
-static_assert(W_OrientationLandscapeRight == Kore::OrientationLandscapeRight, "Kore::OrientationLandscapeRight enum value changed.");
-static_assert(W_OrientationPortrait == Kore::OrientationPortrait, "Kore::OrientationPortrait enum value changed.");
-static_assert(W_OrientationUnknown == Kore::OrientationUnknown, "Kore::OrientationUnknown enum value changed.");
+static_assert(sizeof(WE_Kore_Orientation) == sizeof(Kore::Orientation), "Size of enum Kore::Orientation changed.");
+static_assert(WE_OrientationLandscapeLeft == Kore::OrientationLandscapeLeft, "Kore::OrientationLandscapeLeft enum value changed.");
+static_assert(WE_OrientationLandscapeRight == Kore::OrientationLandscapeRight, "Kore::OrientationLandscapeRight enum value changed.");
+static_assert(WE_OrientationPortrait == Kore::OrientationPortrait, "Kore::OrientationPortrait enum value changed.");
+static_assert(WE_OrientationUnknown == Kore::OrientationUnknown, "Kore::OrientationUnknown enum value changed.");
 
 
 // We need to wrap the callback presented to 
 // Kore::System::setOrientationCallback to facilitate translation between
-// W_Kore_Orientation enum and its original namespaced Kore::Orientation.
-typedef void (*WRAPPED_SETORIENTATIONCALLBACK)(W_Kore_Orientation);
+// WE_Kore_Orientation enum and its original namespaced Kore::Orientation.
+typedef void (*WRAPPED_SETORIENTATIONCALLBACK)(WE_Kore_Orientation);
 static WRAPPED_SETORIENTATIONCALLBACK wrapped_setOrientationCallback;
 // The wrapping function that does the translation.
 static void setOrientationCallback_translator(Kore::Orientation orientation) {
-	wrapped_setOrientationCallback((W_Kore_Orientation)orientation);
+	wrapped_setOrientationCallback((WE_Kore_Orientation)orientation);
 }
 
 #ifdef __cplusplus
@@ -41,7 +41,7 @@ int Kore_System_currentDevice() {
 	return Kore::System::currentDevice();
 }
 
-int Kore_System_initWindow(W_Kore_WindowOptions* options) {
+int Kore_System_initWindow(WS_Kore_WindowOptions* options) {
 	Kore::WindowOptions windowOptions;
 	Kore::RendererOptions rendererOptions;
 
@@ -190,7 +190,7 @@ void Kore_System_setShowWindowFlag(bool value) {
 }
 
 int Kore_System_simpleSetup(int argc, char* argv[], int width, int height,
-							int antialiasing, W_Kore_WindowMode mode,
+							int antialiasing, WE_Kore_WindowMode mode,
 							const char* title, bool showWindow) {
 	// mode = (Kore::WindowMode)mode;
 	return Kore::System::simpleSetup(argc, argv, width, height, antialiasing,
@@ -241,10 +241,10 @@ void Kore_System_setShutdownCallback(void (*value)()) {
 	Kore::System::setShutdownCallback(value);
 }
 
-void Kore_System_setOrientationCallback(void (*value)(W_Kore_Orientation)) {
+void Kore_System_setOrientationCallback(void (*value)(WE_Kore_Orientation)) {
 	// Store the callback and use another function in its place to translate
 	// between the enum values of Kore::Orientation and its wrapping as defined
-	// by W_Kore_Orientation.
+	// by WE_Kore_Orientation.
 	wrapped_setOrientationCallback = value;
 	Kore::System::setOrientationCallback(setOrientationCallback_translator);
 }
@@ -281,7 +281,7 @@ void Kore_System_shutdownCallback() {
 	Kore::System::shutdownCallback();
 }
 
-void Kore_System_orientationCallback(W_Kore_Orientation orientation) {
+void Kore_System_orientationCallback(WE_Kore_Orientation orientation) {
 	Kore::System::orientationCallback((Kore::Orientation)orientation);
 }
 
