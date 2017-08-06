@@ -191,19 +191,77 @@ void Kore_Random_init();
 /**** Graphics1 ****/
 
 // Enums:
-//   Kore::Graphics1::ImageCompression
-//   Kore::Graphics1::Image::Format
+
+// Kore::Graphics1::ImageCompression
+typedef enum WE_Kore_Graphics1_ImageCompression {
+	WE_ImageCompressionNone = 0,
+	WE_ImageCompressionDXT5 = 1,
+	WE_ImageCompressionASTC = 2,
+	WE_ImageCompressionPVRT = 3,
+} WE_Kore_Graphics1_ImageCompression;
+
+// Kore::Graphics1::Image::Format
+typedef enum WE_Kore_Graphics1_Image_Format {
+	WE_FormatRGBA32 = 0,
+	WE_FormatGrey8 = 1,
+	WE_FormatRGB24 = 2,
+	WE_FormatRGBA128 = 3,
+	WE_FormatRGBA64 = 4,
+	WE_FormatA32 = 5,
+	WE_FormatBGRA32 = 6,
+	WE_FormatA16 = 7,
+} WE_Kore_Graphics1_Image_Format;
 
 // Classes:
 
-//   Kore::Graphics1::Color
-struct	WC_Kore_Graphics1_Color;
+/* Kore::Graphics1::Color */
+struct WC_Kore_Graphics1_Color;
 typedef	struct WC_Kore_Graphics1_Color WC_Kore_Graphics1_Color;
-
+// .. constructors
 WC_Kore_Graphics1_Color* Kore_Graphics1_Color_create(uint color);
+// .. destructor, TODO: Kore_Graphics1_Color_destroy needed with no dynallocs?
+void Kore_Graphics1_Color_destroy(WC_Kore_Graphics1_Color* self);
+// .. static members
+// TODO: A bunch of colors in hex
 
-
-//   Kore::Graphics1::Image
+/* Kore::Graphics1::Image */
+struct WC_Kore_Graphics1_Image;
+typedef struct WC_Kore_Graphics1_Image WC_Kore_Graphics1_Image;
+// .. constructors
+WC_Kore_Graphics1_Image* Kore_Graphics1_Image_createWHFR(
+	int width, int height, WE_Kore_Graphics1_Image_Format format, bool readable);
+WC_Kore_Graphics1_Image* Kore_Graphics1_Image_createWHDFR(
+	int width, int height, int depth,
+	WE_Kore_Graphics1_Image_Format format, bool readable);
+WC_Kore_Graphics1_Image* Kore_Graphics1_Image_createFR(
+	const char* filename, bool readable);
+// WC_Kore_Graphics1_Image* Kore_Graphics1_Image_createRFR(
+// 	WC_Kore_Reader& reader, const char* format, bool readable);
+WC_Kore_Graphics1_Image* Kore_Graphics1_Image_createDWHFR(
+	void* data, int width, int height,
+	WE_Kore_Graphics1_Image_Format format, bool readable);
+WC_Kore_Graphics1_Image* Kore_Graphics1_Image_createDWHDFR(
+	void* data, int width, int height, int depth,
+	WE_Kore_Graphics1_Image_Format format, bool readable);
+// .. destructor
+void Kore_Graphics1_Image_destroy(WC_Kore_Graphics1_Image* self);
+// .. methods
+int Kore_Graphics1_Image_at(WC_Kore_Graphics1_Image* self, int x, int y);
+// .. data access
+int Kore_Graphics1_Image_width(WC_Kore_Graphics1_Image* self);
+int Kore_Graphics1_Image_height(WC_Kore_Graphics1_Image* self);
+int Kore_Graphics1_Image_depth(WC_Kore_Graphics1_Image* self);
+WE_Kore_Graphics1_Image_Format Kore_Graphics1_Image_format(
+	WC_Kore_Graphics1_Image* self);
+bool Kore_Graphics1_Image_readable(WC_Kore_Graphics1_Image* self);
+WE_Kore_Graphics1_ImageCompression Kore_Graphics1_Image_compression(
+	WC_Kore_Graphics1_Image* self);
+u8* Kore_Graphics1_Image_data(WC_Kore_Graphics1_Image* self);
+float* Kore_Graphics1_Image_hdrData(WC_Kore_Graphics1_Image* self);
+int Kore_Graphics1_Image_dataSize(WC_Kore_Graphics1_Image* self);
+unsigned Kore_Graphics1_Image_internalFormat(WC_Kore_Graphics1_Image* self);
+// .. static members
+int Kore_Graphics1_Image_sizeOf(WE_Kore_Graphics1_Image_Format format);
 
 /*******************/
 
