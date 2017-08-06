@@ -197,7 +197,7 @@ typedef enum WE_Kore_Graphics1_ImageCompression {
 	WE_ImageCompressionNone = 0,
 	WE_ImageCompressionDXT5 = 1,
 	WE_ImageCompressionASTC = 2,
-	WE_ImageCompressionPVRT = 3,
+	WE_ImageCompressionPVRTC = 3,
 } WE_Kore_Graphics1_ImageCompression;
 
 // Kore::Graphics1::Image::Format

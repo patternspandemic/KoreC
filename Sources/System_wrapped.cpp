@@ -12,12 +12,14 @@
 */
 
 // Kore::Orientation assertions
-static_assert(sizeof(WE_Kore_Orientation) == sizeof(Kore::Orientation), "Size of enum Kore::Orientation changed.");
-static_assert(WE_OrientationLandscapeLeft == Kore::OrientationLandscapeLeft, "Kore::OrientationLandscapeLeft enum value changed.");
-static_assert(WE_OrientationLandscapeRight == Kore::OrientationLandscapeRight, "Kore::OrientationLandscapeRight enum value changed.");
-static_assert(WE_OrientationPortrait == Kore::OrientationPortrait, "Kore::OrientationPortrait enum value changed.");
-static_assert(WE_OrientationUnknown == Kore::OrientationUnknown, "Kore::OrientationUnknown enum value changed.");
-
+static_assert(WE_OrientationLandscapeLeft == Kore::OrientationLandscapeLeft,
+	"Kore::OrientationLandscapeLeft enum value changed.");
+static_assert(WE_OrientationLandscapeRight == Kore::OrientationLandscapeRight,
+	"Kore::OrientationLandscapeRight enum value changed.");
+static_assert(WE_OrientationPortrait == Kore::OrientationPortrait,
+	"Kore::OrientationPortrait enum value changed.");
+static_assert(WE_OrientationUnknown == Kore::OrientationUnknown,
+	"Kore::OrientationUnknown enum value changed.");
 
 // We need to wrap the callback presented to 
 // Kore::System::setOrientationCallback to facilitate translation between
