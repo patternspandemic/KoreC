@@ -99,15 +99,14 @@ WC_Kore_Graphics1_Image* Kore_Graphics1_Image_createDWHFR(
 			data, width, height, (Kore::Graphics1::Image::Format)format, readable));
 }
 
-// FIXME: Compiler cannot find this 6 arg constructor :(
-// WC_Kore_Graphics1_Image* Kore_Graphics1_Image_createDWHDFR(
-// 	void* data, int width, int height, int depth,
-// 	WE_Kore_Graphics1_Image_Format format, bool readable) {
-// 	return reinterpret_cast<WC_Kore_Graphics1_Image*>(
-// 		new Kore::Graphics1::Image(
-// 			data, width, height, depth,
-// 			(Kore::Graphics1::Image::Format)format, readable));
-// }
+WC_Kore_Graphics1_Image* Kore_Graphics1_Image_createDWHDFR(
+	void* data, int width, int height, int depth,
+	WE_Kore_Graphics1_Image_Format format, bool readable) {
+	return reinterpret_cast<WC_Kore_Graphics1_Image*>(
+		new Kore::Graphics1::Image(
+			data, width, height, depth,
+			(Kore::Graphics1::Image::Format)format, readable));
+}
 
 // .. destructor
 void Kore_Graphics1_Image_destroy(WC_Kore_Graphics1_Image* self) {
