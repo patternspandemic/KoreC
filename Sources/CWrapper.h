@@ -272,7 +272,12 @@ int Kore_Graphics1_Image_sizeOf(WE_Kore_Graphics1_Image_Format format);
 /**** Graphics2 ****/
 
 // Enums:
-//   Kore::Graphics2::ImageScaleQuality
+
+// Kore::Graphics2::ImageScaleQuality
+typedef enum WE_Kore_Graphics2_ImageScaleQuality {
+	WE_ImageScaleQualityLow = 0,
+	WE_ImageScaleQualityHigh = 1,
+} WE_Kore_Graphics2_ImageScaleQuality;
 
 // Classes:
 //   Kore::Graphics2::Color? typedef'd from Kore::Graphics1::Color
@@ -291,30 +296,166 @@ int Kore_Graphics1_Image_sizeOf(WE_Kore_Graphics1_Image_Format format);
 /**** Graphics4 ****/
 
 // Enums:
+
 //   Graphics.h
-//     Kore::Graphics4::TextureAddressing
-//     Kore::Graphics4::TextureFilter
-//     Kore::Graphics4::MipmapFilter
-//     Kore::Graphics4::RenderState
-//     Kore::Graphics4::BlendingOperation
-//     Kore::Graphics4::ZCompareMode
-//     Kore::Graphics4::CullMode
-//     Kore::Graphics4::TexDir
-//     Kore::Graphics4::FogType
-//     Kore::Graphics4::RenderTargetFormat
-//     Kore::Graphics4::StencilAction
-//     Kore::Graphics4::TextureOperation
-//     Kore::Graphics4::TextureArgument
+// Kore::Graphics4::TextureAddressing
+typedef enum WE_Kore_Graphics4_TextureAddressing {
+	WE_TextureAddressingRepeat = 0,
+	WE_TextureAddressingMirror = 1,
+	WE_TextureAddressingClamp = 2,
+	WE_TextureAddressingBorder = 3,
+} WE_Kore_Graphics4_TextureAddressing;
+
+// Kore::Graphics4::TextureFilter
+typedef enum WE_Kore_Graphics4_TextureFilter {
+	WE_TextureFilterPointFilter = 0,
+	WE_TextureFilterLinearFilter = 1,
+	WE_TextureFilterAnisotropicFilter = 2,
+} WE_Kore_Graphics4_TextureFilter;
+
+// Kore::Graphics4::MipmapFilter
+typedef enum WE_Kore_Graphics4_MipmapFilter {
+	WE_MipmapFilterNoMipFilter = 0,
+	WE_MipmapFilterPointMipFilter = 1,
+	WE_MipmapFilterLinearMipFilter = 2,
+} WE_Kore_Graphics4_MipmapFilter;
+
+// Kore::Graphics4::RenderState
+typedef enum WE_Kore_Graphics4_RenderState {
+	WE_RenderStateBlendingState = 0,
+	WE_RenderStateDepthTest = 1,
+	WE_RenderStateDepthTestCompare = 2,
+	WE_RenderStateDepthWrite = 3,
+	WE_RenderStateNormalize = 4,
+	WE_RenderStateBackfaceCulling = 5,
+	WE_RenderStateScissorTestState = 6,
+	WE_RenderStateAlphaTestState = 7,
+	WE_RenderStateAlphaReferenceState = 8,
+	WE_RenderStateConservativeRasterization = 9,
+} WE_Kore_Graphics4_RenderState;
+
+// Kore::Graphics4::BlendingOperation
+typedef enum WE_Kore_Graphics4_BlendingOperation {
+	WE_BlendingOperationBlendOne = 0,
+	WE_BlendingOperationBlendZero = 1,
+	WE_BlendingOperationSourceAlpha = 2,
+	WE_BlendingOperationDestinationAlpha = 3,
+	WE_BlendingOperationInverseSourceAlpha = 4,
+	WE_BlendingOperationInverseDestinationAlpha = 5,
+	WE_BlendingOperationSourceColor = 6,
+	WE_BlendingOperationDestinationColor = 7,
+	WE_BlendingOperationInverseSourceColor = 8,
+	WE_BlendingOperationInverseDestinationColor = 9,
+} WE_Kore_Graphics4_BlendingOperation;
+
+// Kore::Graphics4::ZCompareMode
+typedef enum WE_Kore_Graphics4_ZCompareMode {
+	WE_ZCompareModeZCompareAlways = 0,
+	WE_ZCompareModeZCompareNever = 1,
+	WE_ZCompareModeZCompareEqual = 2,
+	WE_ZCompareModeZCompareNotEqual = 3,
+	WE_ZCompareModeZCompareLess = 4,
+	WE_ZCompareModeZCompareLessEqual = 5,
+	WE_ZCompareModeZCompareGreater = 6,
+	WE_ZCompareModeZCompareGreaterEqual = 7,
+} WE_Kore_Graphics4_ZCompareMode;
+
+// Kore::Graphics4::CullMode
+typedef enum WE_Kore_Graphics4_CullMode {
+	WE_CullModeClockwise = 0,
+	WE_CullModeCounterClockwise = 1,
+	WE_CullModeNoCulling = 2,
+} WE_Kore_Graphics4_CullMode;
+
+// Kore::Graphics4::TexDir
+typedef enum WE_Kore_Graphics4_TexDir {
+	WE_TexDirU = 0,
+	WE_TexDirV = 1,
+	WE_TexDirW = 2,
+} WE_Kore_Graphics4_TexDir;
+
+// Kore::Graphics4::FogType
+typedef enum WE_Kore_Graphics4_FogType {
+	WE_FogTypeLinearFog = 0,
+} WE_Kore_Graphics4_FogType;
+
+// Kore::Graphics4::RenderTargetFormat
+typedef enum WE_Kore_Graphics4_RenderTargetFormat {
+	WE_RenderTargetFormatTarget32Bit = 0,
+	WE_RenderTargetFormatTarget64BitFloat = 1,
+	WE_RenderTargetFormatTarget32BitRedFloat = 2,
+	WE_RenderTargetFormatTarget128BitFloat = 3,
+	WE_RenderTargetFormatTarget16BitDepth = 4,
+	WE_RenderTargetFormatTarget8BitRed = 5,
+	WE_RenderTargetFormatTarget16BitRedFloat = 6,
+} WE_Kore_Graphics4_RenderTargetFormat;
+
+// Kore::Graphics4::StencilAction
+typedef enum WE_Kore_Graphics4_StencilAction {
+	WE_StencilActionKeep = 0,
+	WE_StencilActionZero = 1,
+	WE_StencilActionReplace = 2,
+	WE_StencilActionIncrement = 3,
+	WE_StencilActionIncrementWrap = 4,
+	WE_StencilActionDecrement = 5,
+	WE_StencilActionDecrementWrap = 6,
+	WE_StencilActionInvert = 7,
+} WE_Kore_Graphics4_StencilAction;
+
+// Kore::Graphics4::TextureOperation
+typedef enum WE_Kore_Graphics4_TextureOperation {
+	WE_TextureOperationModulateOperation = 0,
+	WE_TextureOperationSelectFirstOperation = 1,
+	WE_TextureOperationSelectSecondOperation = 2,
+} WE_Kore_Graphics4_TextureOperation;
+
+// Kore::Graphics4::TextureArgument
+typedef enum WE_Kore_Graphics4_TextureArgument {
+	WE_TextureArgumentCurrentColorArgument = 0,
+	WE_TextureArgumentTextureColorArgument = 1,
+} WE_Kore_Graphics4_TextureArgument;
+
 //   Shader.h
-//     Kore::Graphics4::ShaderType
+// Kore::Graphics4::ShaderType
+typedef enum WE_Kore_Graphics4_ShaderType {
+	WE_ShaderTypeFragmentShader = 0,
+	WE_ShaderTypeVertexShader = 1,
+	WE_ShaderTypeGeometryShader = 2,
+	WE_ShaderTypeTessellationControlShader = 3,
+	WE_ShaderTypeTessellationEvaluationShader = 4,
+} WE_Kore_Graphics4_ShaderType;
+
 //   VertexStructure.h
-//     Kore::Graphics4::VertexData
-//     Kore::Graphics4::VertexAttribute
+// Kore::Graphics4::VertexData
+typedef enum WE_Kore_Graphics4_VertexData {
+	WE_VertexDataNoVertexData = 0,
+	WE_VertexDataFloat1VertexData = 1,
+	WE_VertexDataFloat2VertexData = 2,
+	WE_VertexDataFloat3VertexData = 3,
+	WE_VertexDataFloat4VertexData = 4,
+	WE_VertexDataFloat4x4VertexData = 5,
+	WE_VertexDataColorVertexData = 6,
+} WE_Kore_Graphics4_VertexData;
+
+// Kore::Graphics4::VertexAttribute
+typedef enum WE_Kore_Graphics4_VertexAttribute {
+	WE_VertexAttributeNoVertexAttribute = 0,
+	WE_VertexAttributeVertexCoord = 1,
+	WE_VertexAttributeVertexNormal = 2,
+	WE_VertexAttributeVertexColor0 = 3,
+	WE_VertexAttributeVertexColor1 = 4,
+	WE_VertexAttributeVertexTexCoord0 = 5,
+	WE_VertexAttributeVertexTexCoord1 = 6,
+	WE_VertexAttributeVertexTexCoord2 = 7,
+	WE_VertexAttributeVertexTexCoord3 = 8,
+	WE_VertexAttributeVertexTexCoord4 = 9,
+	WE_VertexAttributeVertexTexCoord5 = 10,
+	WE_VertexAttributeVertexTexCoord6 = 11,
+	WE_VertexAttributeVertexTexCoord7 = 12,
+} WE_Kore_Graphics4_VertexAttribute;
 
 // Classes:
 //   Graphics.h
-//     Kore::Graphics4::PipelineState
-//     Kore::Graphics4::TextureArray
 //     Kore::Graphics4::VertexBuffer
 //     Kore::Graphics4::IndexBuffer
 //     Kore::Graphics4::RenderTarget

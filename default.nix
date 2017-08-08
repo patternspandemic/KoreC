@@ -41,7 +41,9 @@ stdenv.mkDerivation rec {
       --replace "-o \"KoreC\"" "-shared -o libkorec.so" \
       --replace "-o window_wrapped.o" "-o window_wrapped.o -std=c++11" \
       --replace "-o system_wrapped.o" "-o system_wrapped.o -std=c++11" \
-      --replace "-o graphics1_wrapped.o" "-o graphics1_wrapped.o -std=c++11"
+      --replace "-o graphics1_wrapped.o" "-o graphics1_wrapped.o -std=c++11" \
+      --replace "-o graphics2_wrapped.o" "-o graphics2_wrapped.o -std=c++11" \
+      --replace "-o graphics4_wrapped.o" "-o graphics4_wrapped.o -std=c++11"
     cd ../../../
   '';
 
