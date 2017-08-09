@@ -43,7 +43,9 @@ stdenv.mkDerivation rec {
       --replace "-o system_wrapped.o" "-o system_wrapped.o -std=c++11" \
       --replace "-o graphics1_wrapped.o" "-o graphics1_wrapped.o -std=c++11" \
       --replace "-o graphics2_wrapped.o" "-o graphics2_wrapped.o -std=c++11" \
-      --replace "-o graphics4_wrapped.o" "-o graphics4_wrapped.o -std=c++11"
+      --replace "-o graphics4_wrapped.o" "-o graphics4_wrapped.o -std=c++11" \
+      --replace "-o shader4_wrapped.o" "-o shader4_wrapped.o -std=c++11" \
+      --replace "-o vertexstructure4_wrapped.o" "-o vertexstructure4_wrapped.o -std=c++11"
     cd ../../../
   '';
 
