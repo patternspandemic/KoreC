@@ -235,6 +235,7 @@ WC_Kore_Graphics1_Image* Kore_Graphics1_Image_createWHDFR(
 	WE_Kore_Graphics1_Image_Format format, bool readable);
 WC_Kore_Graphics1_Image* Kore_Graphics1_Image_createFR(
 	const char* filename, bool readable);
+// TODO: Check reader param syntax & need to expose Reader class if useful?
 // WC_Kore_Graphics1_Image* Kore_Graphics1_Image_createRFR(
 // 	WC_Kore_Reader& reader, const char* format, bool readable);
 WC_Kore_Graphics1_Image* Kore_Graphics1_Image_createDWHFR(
@@ -487,9 +488,68 @@ void Kore_Graphics4_ConstantLocation_destroy(
 	WC_Kore_Graphics4_ConstantLocation* self);
 
 //   Texture.h
-//     Kore::Graphics4::Image? typedef'd from Kore::Graphics1::Image
-//     Kore::Graphics4::TextureUnit
-//     Kore::Graphics4::Texture
+/* Kore::Graphics4::TextureUnit */
+struct WC_Kore_Graphics4_TextureUnit;
+typedef struct WC_Kore_Graphics4_TextureUnit WC_Kore_Graphics4_TextureUnit;
+// .. constructors
+WC_Kore_Graphics4_TextureUnit* Kore_Graphics4_TextureUnit_create();
+// .. destructor
+void Kore_Graphics4_TextureUnit_destroy(
+	WC_Kore_Graphics4_TextureUnit* self);
+
+/* Kore::Graphics4::Texture */
+struct WC_Kore_Graphics4_Texture;
+typedef struct WC_Kore_Graphics4_Texture WC_Kore_Graphics4_Texture;
+// .. constructors
+WC_Kore_Graphics4_Texture* Kore_Graphics4_Texture_createWHFR(
+	int width, int height, WE_Kore_Graphics1_Image_Format format, bool readable);
+WC_Kore_Graphics4_Texture* Kore_Graphics4_Texture_createWHDFR(
+	int width, int height, int depth,
+	WE_Kore_Graphics1_Image_Format format, bool readable);
+// TODO: Check reader param syntax & need to expose Reader class if useful?
+// WC_Kore_Graphics4_Texture* Kore_Graphics4_Texture_createRFR(
+// 	WC_Kore_Reader& reader, const char* format, bool readable);
+WC_Kore_Graphics4_Texture* Kore_Graphics4_Texture_createFR(
+	const char* filename, bool readable);
+WC_Kore_Graphics4_Texture* Kore_Graphics4_Texture_createDSFR(
+	void* data, int size, const char* format, bool readable);
+WC_Kore_Graphics4_Texture* Kore_Graphics4_Texture_createDWHFR(
+	void* data, int width, int height,
+	WE_Kore_Graphics1_Image_Format format, bool readable);
+WC_Kore_Graphics4_Texture* Kore_Graphics4_Texture_createDWHDFR(
+	void* data, int width, int height, int depth,
+	WE_Kore_Graphics1_Image_Format format, bool readable);
+// .. destructor
+void Kore_Graphics4_Texture_destroy(
+	WC_Kore_Graphics4_Texture* self);
+// .. methods
+// TODO: Deref WC_Kore_Graphics4_TextureUnit* to pass by val parameter?
+void Kore_Graphics4_Texture__set(
+	WC_Kore_Graphics4_Texture* self, WC_Kore_Graphics4_TextureUnit* unit);
+// TODO: Deref WC_Kore_Graphics4_TextureUnit* to pass by val parameter?
+void Kore_Graphics4_Texture__setImage(
+	WC_Kore_Graphics4_Texture* self, WC_Kore_Graphics4_TextureUnit* unit);
+u8* Kore_Graphics4_Texture_lock(WC_Kore_Graphics4_Texture* self);
+void Kore_Graphics4_Texture_unlock(WC_Kore_Graphics4_Texture* self);
+void Kore_Graphics4_Texture_clear(
+	WC_Kore_Graphics4_Texture* self,
+	int x, int y, int z, int width, int height,
+	int depth, uint color);
+#if defined(KORE_IOS) || defined(KORE_MACOS)
+void Kore_Graphics4_Texture_upload(
+	WC_Kore_Graphics4_Texture* self,
+	u8* data, int stride);
+#endif
+void Kore_Graphics4_Texture_generateMipmaps(
+	WC_Kore_Graphics4_Texture* self, int levels);
+void Kore_Graphics4_Texture_setMipmap(
+	WC_Kore_Graphics4_Texture* self,
+	WC_Kore_Graphics4_Texture* mipmap, int level);
+int Kore_Graphics4_Texture_stride(WC_Kore_Graphics4_Texture* self);
+// .. data access
+int Kore_Graphics4_Texture_texWidth(WC_Kore_Graphics4_Texture* self);
+int Kore_Graphics4_Texture_texHeight(WC_Kore_Graphics4_Texture* self);
+int Kore_Graphics4_Texture_texDepth(WC_Kore_Graphics4_Texture* self);
 
 //   TextureArray.h
 /* Kore::Graphics4::TextureArray */
