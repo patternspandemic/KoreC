@@ -135,15 +135,15 @@ int Kore_Graphics4_Texture_stride(WC_Kore_Graphics4_Texture* self) {
 }
 
 // .. data access
-int Kore_Graphics4_Texture_texWidth(WC_Kore_Graphics4_Texture* self) {
+int Kore_Graphics4_Texture_getTexWidth(WC_Kore_Graphics4_Texture* self) {
   return reinterpret_cast<Kore::Graphics4::Texture*>(self)->texWidth;
 }
 
-int Kore_Graphics4_Texture_texHeight(WC_Kore_Graphics4_Texture* self) {
+int Kore_Graphics4_Texture_getTexHeight(WC_Kore_Graphics4_Texture* self) {
   return reinterpret_cast<Kore::Graphics4::Texture*>(self)->texHeight;
 }
 
-int Kore_Graphics4_Texture_texDepth(WC_Kore_Graphics4_Texture* self) {
+int Kore_Graphics4_Texture_getTexDepth(WC_Kore_Graphics4_Texture* self) {
   return reinterpret_cast<Kore::Graphics4::Texture*>(self)->texDepth;
 }
 

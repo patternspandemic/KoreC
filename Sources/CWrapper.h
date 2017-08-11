@@ -248,7 +248,7 @@ WC_Kore_Graphics1_Image* Kore_Graphics1_Image_createDWHDFR(
 void Kore_Graphics1_Image_destroy(WC_Kore_Graphics1_Image* self);
 // .. methods
 int Kore_Graphics1_Image_at(WC_Kore_Graphics1_Image* self, int x, int y);
-// .. data access
+// .. data accessors
 int Kore_Graphics1_Image_width(WC_Kore_Graphics1_Image* self);
 int Kore_Graphics1_Image_height(WC_Kore_Graphics1_Image* self);
 int Kore_Graphics1_Image_depth(WC_Kore_Graphics1_Image* self);
@@ -463,7 +463,26 @@ typedef enum WE_Kore_Graphics4_VertexAttribute {
 //     Kore::Graphics4::RenderTarget
 
 //   PipelineState.h
-//     Kore::Graphics4::PipelineState
+/* Kore::Graphics4::PipelineState */
+struct WC_Kore_Graphics4_PipelineState;
+typedef struct WC_Kore_Graphics4_PipelineState WC_Kore_Graphics4_PipelineState;
+// .. constructors
+WC_Kore_Graphics4_PipelineState* Kore_Graphics4_PipelineState_create();
+// .. destructor
+void Kore_Graphics4_PipelineState_destroy(
+	WC_Kore_Graphics4_PipelineState* self);
+// .. methods
+void Kore_Graphics4_PipelineState_compile(
+	WC_Kore_Graphics4_PipelineState* self);
+// TODO: Turn returned ConstantLocation to WC_Kore_Graphics4_ConstantLocation* ?
+WC_Kore_Graphics4_ConstantLocation* Kore_Graphics4_PipelineState_getConstantLocation(
+	WC_Kore_Graphics4_PipelineState* self, const char* name);
+// TODO: Turn returned TextureUnit to WC_Kore_Graphics4_TextureUnit* ?
+WC_Kore_Graphics4_TextureUnit* Kore_Graphics4_PipelineState_getTextureUnit(
+	WC_Kore_Graphics4_PipelineState* self, const char* name);
+// .. data accessors
+
+
 
 //   Shader.h
 /* Kore::Graphics4::Shader */
@@ -546,10 +565,10 @@ void Kore_Graphics4_Texture_setMipmap(
 	WC_Kore_Graphics4_Texture* self,
 	WC_Kore_Graphics4_Texture* mipmap, int level);
 int Kore_Graphics4_Texture_stride(WC_Kore_Graphics4_Texture* self);
-// .. data access
-int Kore_Graphics4_Texture_texWidth(WC_Kore_Graphics4_Texture* self);
-int Kore_Graphics4_Texture_texHeight(WC_Kore_Graphics4_Texture* self);
-int Kore_Graphics4_Texture_texDepth(WC_Kore_Graphics4_Texture* self);
+// .. data accessors, TODO: Setter needed?
+int Kore_Graphics4_Texture_getTexWidth(WC_Kore_Graphics4_Texture* self);
+int Kore_Graphics4_Texture_getTexHeight(WC_Kore_Graphics4_Texture* self);
+int Kore_Graphics4_Texture_getTexDepth(WC_Kore_Graphics4_Texture* self);
 
 //   TextureArray.h
 /* Kore::Graphics4::TextureArray */
@@ -577,12 +596,12 @@ WC_Kore_Graphics4_VertexElement* Kore_Graphics4_VertexElement_createAD(
 // .. destructor
 void Kore_Graphics4_VertexElement_destroy(
 	WC_Kore_Graphics4_VertexElement* self);
-// .. data access
-const char* Kore_Graphics4_VertexElement_name(
+// .. data accessors, TODO: Setter needed?
+const char* Kore_Graphics4_VertexElement_getName(
 	WC_Kore_Graphics4_VertexElement* self);
-WE_Kore_Graphics4_VertexAttribute Kore_Graphics4_VertexElement_attribute(
+WE_Kore_Graphics4_VertexAttribute Kore_Graphics4_VertexElement_getAttribute(
 	WC_Kore_Graphics4_VertexElement* self);
-WE_Kore_Graphics4_VertexData Kore_Graphics4_VertexElement_data(
+WE_Kore_Graphics4_VertexData Kore_Graphics4_VertexElement_getData(
 	WC_Kore_Graphics4_VertexElement* self);
 
 /* Kore::Graphics4::VertexStructure */
@@ -601,13 +620,13 @@ void Kore_Graphics4_VertexStructure_addAD(
 	WC_Kore_Graphics4_VertexStructure* self,
 	WE_Kore_Graphics4_VertexAttribute attribute,
 	WE_Kore_Graphics4_VertexData data);
-// .. data access
-// TODO: Verify return type of Kore_Graphics4_VertexStructure_elements
-WC_Kore_Graphics4_VertexElement** Kore_Graphics4_VertexStructure_elements(
+// .. data accessors, TODO: Setter needed? I think not.
+// TODO: Verify return type of Kore_Graphics4_VertexStructure_getElements
+WC_Kore_Graphics4_VertexElement** Kore_Graphics4_VertexStructure_getElements(
 	WC_Kore_Graphics4_VertexStructure* self);
-int Kore_Graphics4_VertexStructure_size(
+int Kore_Graphics4_VertexStructure_getSize(
 	WC_Kore_Graphics4_VertexStructure* self);
-bool Kore_Graphics4_VertexStructure_instanced(
+bool Kore_Graphics4_VertexStructure_getInstanced(
 	WC_Kore_Graphics4_VertexStructure* self);
 // .. static members
 int Kore_Graphics4_VertexStructure_maxElementsCount();

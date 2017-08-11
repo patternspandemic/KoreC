@@ -108,17 +108,17 @@ void Kore_Graphics4_VertexElement_destroy(
 }
 
 // .. data access
-const char* Kore_Graphics4_VertexElement_name(
+const char* Kore_Graphics4_VertexElement_getName(
 	WC_Kore_Graphics4_VertexElement* self) {
   return reinterpret_cast<Kore::Graphics4::VertexElement*>(self)->name;
 }
 
-WE_Kore_Graphics4_VertexAttribute Kore_Graphics4_VertexElement_attribute(
+WE_Kore_Graphics4_VertexAttribute Kore_Graphics4_VertexElement_getAttribute(
 	WC_Kore_Graphics4_VertexElement* self) {
   return (WE_Kore_Graphics4_VertexAttribute)reinterpret_cast<Kore::Graphics4::VertexElement*>(self)->attribute;
 }
 
-WE_Kore_Graphics4_VertexData Kore_Graphics4_VertexElement_data(
+WE_Kore_Graphics4_VertexData Kore_Graphics4_VertexElement_getData(
 	WC_Kore_Graphics4_VertexElement* self) {
   return (WE_Kore_Graphics4_VertexData)reinterpret_cast<Kore::Graphics4::VertexElement*>(self)->data;
 }
@@ -158,18 +158,18 @@ void Kore_Graphics4_VertexStructure_addAD(
 
 // .. data access
 // TODO: Verify return type of Kore_Graphics4_VertexStructure_elements
-WC_Kore_Graphics4_VertexElement** Kore_Graphics4_VertexStructure_elements(
+WC_Kore_Graphics4_VertexElement** Kore_Graphics4_VertexStructure_getElements(
 	WC_Kore_Graphics4_VertexStructure* self) {
   return reinterpret_cast<WC_Kore_Graphics4_VertexElement**>(
     reinterpret_cast<Kore::Graphics4::VertexStructure*>(self)->elements);
 }
 
-int Kore_Graphics4_VertexStructure_size(
+int Kore_Graphics4_VertexStructure_getSize(
 	WC_Kore_Graphics4_VertexStructure* self) {
   return reinterpret_cast<Kore::Graphics4::VertexStructure*>(self)->size;
 }
 
-bool Kore_Graphics4_VertexStructure_instanced(
+bool Kore_Graphics4_VertexStructure_getInstanced(
 	WC_Kore_Graphics4_VertexStructure* self) {
   return reinterpret_cast<Kore::Graphics4::VertexStructure*>(self)->instanced;
 }
