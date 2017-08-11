@@ -565,10 +565,22 @@ void Kore_Graphics4_Texture_setMipmap(
 	WC_Kore_Graphics4_Texture* self,
 	WC_Kore_Graphics4_Texture* mipmap, int level);
 int Kore_Graphics4_Texture_stride(WC_Kore_Graphics4_Texture* self);
+// .. inherited methods
+int Kore_Graphics4_Texture_at(WC_Kore_Graphics4_Texture* self, int x, int y);
 // .. data accessors, TODO: Setter needed?
 int Kore_Graphics4_Texture_getTexWidth(WC_Kore_Graphics4_Texture* self);
 int Kore_Graphics4_Texture_getTexHeight(WC_Kore_Graphics4_Texture* self);
 int Kore_Graphics4_Texture_getTexDepth(WC_Kore_Graphics4_Texture* self);
+// .. inherited data accessors, TODO: Setters needed?
+WE_Kore_Graphics1_Image_Format Kore_Graphics4_Texture_format(
+	WC_Kore_Graphics4_Texture* self);
+bool Kore_Graphics4_Texture_readable(WC_Kore_Graphics4_Texture* self);
+WE_Kore_Graphics1_ImageCompression Kore_Graphics4_Texture_compression(
+	WC_Kore_Graphics4_Texture* self);
+u8* Kore_Graphics4_Texture_data(WC_Kore_Graphics4_Texture* self);
+float* Kore_Graphics4_Texture_hdrData(WC_Kore_Graphics4_Texture* self);
+int Kore_Graphics4_Texture_dataSize(WC_Kore_Graphics4_Texture* self);
+unsigned Kore_Graphics4_Texture_internalFormat(WC_Kore_Graphics4_Texture* self);
 
 //   TextureArray.h
 /* Kore::Graphics4::TextureArray */
