@@ -465,8 +465,14 @@ typedef enum WE_Kore_Graphics4_VertexAttribute {
 // Opaque Types to represent classes:
 
 /* Kore::Graphics4::VertexBuffer */
+struct WC_Kore_Graphics4_VertexBuffer;
+typedef struct WC_Kore_Graphics4_VertexBuffer WC_Kore_Graphics4_VertexBuffer;
 /* Kore::Graphics4::IndexBuffer */
+struct WC_Kore_Graphics4_IndexBuffer;
+typedef struct WC_Kore_Graphics4_IndexBuffer WC_Kore_Graphics4_IndexBuffer;
 /* Kore::Graphics4::RenderTarget */
+struct WC_Kore_Graphics4_RenderTarget;
+typedef struct WC_Kore_Graphics4_RenderTarget WC_Kore_Graphics4_RenderTarget;
 /* Kore::Graphics4::PipelineState */
 struct WC_Kore_Graphics4_PipelineState;
 typedef struct WC_Kore_Graphics4_PipelineState WC_Kore_Graphics4_PipelineState;
@@ -710,6 +716,9 @@ int Kore_Graphics4_Texture_getTexWidth(WC_Kore_Graphics4_Texture* self);
 int Kore_Graphics4_Texture_getTexHeight(WC_Kore_Graphics4_Texture* self);
 int Kore_Graphics4_Texture_getTexDepth(WC_Kore_Graphics4_Texture* self);
 // .. inherited data accessors, TODO: Setters needed?
+int Kore_Graphics4_Texture_getWidth(WC_Kore_Graphics4_Texture* self);
+int Kore_Graphics4_Texture_getHeight(WC_Kore_Graphics4_Texture* self);
+int Kore_Graphics4_Texture_getDepth(WC_Kore_Graphics4_Texture* self);
 WE_Kore_Graphics1_Image_Format Kore_Graphics4_Texture_format(
 	WC_Kore_Graphics4_Texture* self);
 bool Kore_Graphics4_Texture_readable(WC_Kore_Graphics4_Texture* self);

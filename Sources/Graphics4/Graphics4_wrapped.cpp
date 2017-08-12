@@ -1,6 +1,7 @@
 #include <Kore/pch.h>
 #include <Kore/Graphics4/Graphics.h>
 #include <Kore/Graphics4/Shader.h>
+#include <Kore/Graphics4/Texture.h>
 #include <Kore/Graphics4/VertexStructure.h>
 
 #include <assert.h>
@@ -235,6 +236,12 @@ static_assert(
 static_assert(
   WE_TextureArgumentTextureColorArgument == Kore::Graphics4::TextureArgument::TextureColorArgument,
   "Kore::Graphics4::TextureArgument::TextureColorArgument enum value changed.");
+
+
+
+
+
+// Functions
 
 void Kore_Graphics4_begin(int windowId) {
   Kore::Graphics4::begin(windowId);

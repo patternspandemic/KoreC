@@ -153,6 +153,18 @@ int Kore_Graphics4_Texture_getTexDepth(WC_Kore_Graphics4_Texture* self) {
 }
 
 // .. inherited data accessors, TODO: Setters needed?
+int Kore_Graphics4_Texture_getWidth(WC_Kore_Graphics4_Texture* self) {
+	return reinterpret_cast<Kore::Graphics4::Texture*>(self)->width;
+}
+
+int Kore_Graphics4_Texture_getHeight(WC_Kore_Graphics4_Texture* self) {
+	return reinterpret_cast<Kore::Graphics4::Texture*>(self)->height;
+}
+
+int Kore_Graphics4_Texture_getDepth(WC_Kore_Graphics4_Texture* self) {
+	return reinterpret_cast<Kore::Graphics4::Texture*>(self)->depth;
+}
+
 WE_Kore_Graphics1_Image_Format Kore_Graphics4_Texture_format(
 	WC_Kore_Graphics4_Texture* self) {
 	return (WE_Kore_Graphics1_Image_Format)reinterpret_cast<Kore::Graphics4::Texture*>(self)->format;
