@@ -238,10 +238,83 @@ static_assert(
   "Kore::Graphics4::TextureArgument::TextureColorArgument enum value changed.");
 
 
+/* Kore::Graphics4::VertexBuffer */
 
+// .. constructors
+// TODO: How to pass const VertexStructure& structure?
+WC_Kore_Graphics4_VertexBuffer* Kore_Graphics4_VertexBuffer_create(
+	int count, const VertexStructure& structure, int instanceDataStepRate);
 
+// .. destructor
+void Kore_Graphics4_VertexBuffer_destroy(WC_Kore_Graphics4_VertexBuffer* self);
 
-// Functions
+// .. methods
+float* Kore_Graphics4_VertexBuffer_lock(WC_Kore_Graphics4_VertexBuffer* self);
+float* Kore_Graphics4_VertexBuffer_lockSC(
+	WC_Kore_Graphics4_VertexBuffer* self,
+	int start, int count);
+void Kore_Graphics4_VertexBuffer_unlock(WC_Kore_Graphics4_VertexBuffer* self);
+int Kore_Graphics4_VertexBuffer_count(WC_Kore_Graphics4_VertexBuffer* self);
+int Kore_Graphics4_VertexBuffer_stride(WC_Kore_Graphics4_VertexBuffer* self);
+
+/* Kore::Graphics4::IndexBuffer */
+
+// .. constructors
+WC_Kore_Graphics4_IndexBuffer* Kore_Graphics4_IndexBuffer_create(int count);
+
+// .. destructor
+void Kore_Graphics4_IndexBuffer_destroy(WC_Kore_Graphics4_IndexBuffer* self);
+
+// .. methods
+int* Kore_Graphics4_IndexBuffer_lock(WC_Kore_Graphics4_IndexBuffer* self);
+void Kore_Graphics4_IndexBuffer_unlock(WC_Kore_Graphics4_IndexBuffer* self);
+int Kore_Graphics4_IndexBuffer_count(WC_Kore_Graphics4_IndexBuffer* self);
+
+/* Kore::Graphics4::RenderTarget */
+
+// .. constructors
+WC_Kore_Graphics4_RenderTarget* Kore_Graphics4_RenderTarget_createWHDAFSC(
+	int width, int height, int depthBufferBits, bool antialiasing,
+	WE_Kore_Graphics4_RenderTargetFormat format,
+	int stencilBufferBits, int contextId);
+WC_Kore_Graphics4_RenderTarget* Kore_Graphics4_RenderTarget_createCDAFSC(
+	int cubeMapSize, int depthBufferBits, bool antialiasing,
+	WE_Kore_Graphics4_RenderTargetFormat format,
+	int stencilBufferBits, int contextId);
+
+// .. destructor
+void Kore_Graphics4_RenderTarget_destroy(WC_Kore_Graphics4_RenderTarget* self);
+
+// .. methods
+// TODO: How to pass unit by value?
+void Kore_Graphics4_RenderTarget_useColorAsTexture(
+	WC_Kore_Graphics4_RenderTarget* self,
+	WC_Kore_Graphics4_TextureUnit* unit);
+// TODO: How to pass unit by value?
+void Kore_Graphics4_RenderTarget_useDepthAsTexture(
+	WC_Kore_Graphics4_RenderTarget* self,
+	WC_Kore_Graphics4_TextureUnit* unit);
+void Kore_Graphics4_RenderTarget_setDepthStencilFrom(
+	WC_Kore_Graphics4_RenderTarget* self,
+	WC_Kore_Graphics4_RenderTarget* source);
+void Kore_Graphics4_RenderTarget_getPixels(
+	WC_Kore_Graphics4_RenderTarget* self, u8* data);
+
+// .. data accessors, TODO: Setter needed?
+int Kore_Graphics4_RenderTarget_getWidth(WC_Kore_Graphics4_RenderTarget* self);
+int Kore_Graphics4_RenderTarget_getHeight(WC_Kore_Graphics4_RenderTarget* self);
+int Kore_Graphics4_RenderTarget_getTexWidth(
+	WC_Kore_Graphics4_RenderTarget* self);
+int Kore_Graphics4_RenderTarget_getTexHeight(
+	WC_Kore_Graphics4_RenderTarget* self);
+int Kore_Graphics4_RenderTarget_getContextId(
+	WC_Kore_Graphics4_RenderTarget* self);
+bool Kore_Graphics4_RenderTarget_getIsCubeMap(
+	WC_Kore_Graphics4_RenderTarget* self);
+bool Kore_Graphics4_RenderTarget_getIsDepthAttachment(
+	WC_Kore_Graphics4_RenderTarget* self);
+
+/* Functions */
 
 void Kore_Graphics4_begin(int windowId) {
   Kore::Graphics4::begin(windowId);
