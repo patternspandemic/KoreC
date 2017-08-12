@@ -212,11 +212,18 @@ typedef enum WE_Kore_Graphics1_Image_Format {
 	WE_FormatA16 = 7,
 } WE_Kore_Graphics1_Image_Format;
 
-// Classes:
+// Opaque Types to represent classes:
 
 /* Kore::Graphics1::Color */
 struct WC_Kore_Graphics1_Color;
-typedef	struct WC_Kore_Graphics1_Color WC_Kore_Graphics1_Color;
+typedef struct WC_Kore_Graphics1_Color WC_Kore_Graphics1_Color;
+/* Kore::Graphics1::Image */
+struct WC_Kore_Graphics1_Image;
+typedef struct WC_Kore_Graphics1_Image WC_Kore_Graphics1_Image;
+
+// Classes:
+
+/* Kore::Graphics1::Color */
 // .. constructors
 WC_Kore_Graphics1_Color* Kore_Graphics1_Color_create(uint color);
 // .. destructor, TODO: Kore_Graphics1_Color_destroy needed with no dynallocs?
@@ -225,8 +232,6 @@ void Kore_Graphics1_Color_destroy(WC_Kore_Graphics1_Color* self);
 // TODO: A bunch of colors in hex
 
 /* Kore::Graphics1::Image */
-struct WC_Kore_Graphics1_Image;
-typedef struct WC_Kore_Graphics1_Image WC_Kore_Graphics1_Image;
 // .. constructors
 WC_Kore_Graphics1_Image* Kore_Graphics1_Image_createWHFR(
 	int width, int height, WE_Kore_Graphics1_Image_Format format, bool readable);
@@ -279,6 +284,8 @@ typedef enum WE_Kore_Graphics2_ImageScaleQuality {
 	WE_ImageScaleQualityLow = 0,
 	WE_ImageScaleQualityHigh = 1,
 } WE_Kore_Graphics2_ImageScaleQuality;
+
+// Opaque Types to represent classes:
 
 // Classes:
 //   Kore::Graphics2::Color? typedef'd from Kore::Graphics1::Color
@@ -455,6 +462,36 @@ typedef enum WE_Kore_Graphics4_VertexAttribute {
 	WE_VertexAttributeVertexTexCoord7 = 12,
 } WE_Kore_Graphics4_VertexAttribute;
 
+// Opaque Types to represent classes:
+
+/* Kore::Graphics4::VertexBuffer */
+/* Kore::Graphics4::IndexBuffer */
+/* Kore::Graphics4::RenderTarget */
+/* Kore::Graphics4::PipelineState */
+struct WC_Kore_Graphics4_PipelineState;
+typedef struct WC_Kore_Graphics4_PipelineState WC_Kore_Graphics4_PipelineState;
+/* Kore::Graphics4::Shader */
+struct WC_Kore_Graphics4_Shader;
+typedef struct WC_Kore_Graphics4_Shader WC_Kore_Graphics4_Shader;
+/* Kore::Graphics4::ConstantLocation */
+struct WC_Kore_Graphics4_ConstantLocation;
+typedef struct WC_Kore_Graphics4_ConstantLocation WC_Kore_Graphics4_ConstantLocation;
+/* Kore::Graphics4::TextureUnit */
+struct WC_Kore_Graphics4_TextureUnit;
+typedef struct WC_Kore_Graphics4_TextureUnit WC_Kore_Graphics4_TextureUnit;
+/* Kore::Graphics4::Texture */
+struct WC_Kore_Graphics4_Texture;
+typedef struct WC_Kore_Graphics4_Texture WC_Kore_Graphics4_Texture;
+/* Kore::Graphics4::TextureArray */
+struct WC_Kore_Graphics4_TextureArray;
+typedef struct WC_Kore_Graphics4_TextureArray WC_Kore_Graphics4_TextureArray;
+/* Kore::Graphics4::VertexElement */
+struct WC_Kore_Graphics4_VertexElement;
+typedef struct WC_Kore_Graphics4_VertexElement WC_Kore_Graphics4_VertexElement;
+/* Kore::Graphics4::VertexStructure */
+struct WC_Kore_Graphics4_VertexStructure;
+typedef struct WC_Kore_Graphics4_VertexStructure WC_Kore_Graphics4_VertexStructure;
+
 // Classes:
 
 //   Graphics.h
@@ -464,8 +501,6 @@ typedef enum WE_Kore_Graphics4_VertexAttribute {
 
 //   PipelineState.h
 /* Kore::Graphics4::PipelineState */
-struct WC_Kore_Graphics4_PipelineState;
-typedef struct WC_Kore_Graphics4_PipelineState WC_Kore_Graphics4_PipelineState;
 // .. constructors
 WC_Kore_Graphics4_PipelineState* Kore_Graphics4_PipelineState_create();
 // .. destructor
@@ -474,13 +509,12 @@ void Kore_Graphics4_PipelineState_destroy(
 // .. methods
 void Kore_Graphics4_PipelineState_compile(
 	WC_Kore_Graphics4_PipelineState* self);
-// TODO: Turn returned ConstantLocation to WC_Kore_Graphics4_ConstantLocation* ?
 WC_Kore_Graphics4_ConstantLocation* Kore_Graphics4_PipelineState_getConstantLocation(
 	WC_Kore_Graphics4_PipelineState* self, const char* name);
-// TODO: Turn returned TextureUnit to WC_Kore_Graphics4_TextureUnit* ?
 WC_Kore_Graphics4_TextureUnit* Kore_Graphics4_PipelineState_getTextureUnit(
 	WC_Kore_Graphics4_PipelineState* self, const char* name);
 // .. data accessors
+// TODO: Verify WC_Kore_Graphics4_VertexStructure** return
 WC_Kore_Graphics4_VertexStructure** Kore_Graphics4_PipelineState_getInputLayout(
 	WC_Kore_Graphics4_PipelineState* self);
 WC_Kore_Graphics4_Shader* Kore_Graphics4_PipelineState_getVertexShader(
@@ -516,8 +550,7 @@ void Kore_Graphics4_PipelineState_setCullMode(
 bool Kore_Graphics4_PipelineState_getDepthWrite(
 	WC_Kore_Graphics4_PipelineState* self);
 void Kore_Graphics4_PipelineState_setDepthWrite(
-	WC_Kore_Graphics4_PipelineState* self,
-	bool value);
+	WC_Kore_Graphics4_PipelineState* self, bool value);
 WE_Kore_Graphics4_ZCompareMode Kore_Graphics4_PipelineState_getDepthMode(
 	WC_Kore_Graphics4_PipelineState* self);
 void Kore_Graphics4_PipelineState_setDepthMode(
@@ -546,18 +579,15 @@ void Kore_Graphics4_PipelineState_setStencilFail(
 int Kore_Graphics4_PipelineState_getStencilReferenceValue(
 	WC_Kore_Graphics4_PipelineState* self);
 void Kore_Graphics4_PipelineState_setStencilReferenceValue(
-	WC_Kore_Graphics4_PipelineState* self,
-	int value);
+	WC_Kore_Graphics4_PipelineState* self, int value);
 int Kore_Graphics4_PipelineState_getStencilReadMask(
 	WC_Kore_Graphics4_PipelineState* self);
 void Kore_Graphics4_PipelineState_setStencilReadMask(
-	WC_Kore_Graphics4_PipelineState* self,
-	int value);
+	WC_Kore_Graphics4_PipelineState* self, int value);
 int Kore_Graphics4_PipelineState_getStencilWriteMask(
 	WC_Kore_Graphics4_PipelineState* self);
 void Kore_Graphics4_PipelineState_setStencilWriteMask(
-	WC_Kore_Graphics4_PipelineState* self,
-	int value);
+	WC_Kore_Graphics4_PipelineState* self, int value);
 // TODO: One, Zero deactivates blending, add convenience funcs
 WE_Kore_Graphics4_BlendingOperation Kore_Graphics4_PipelineState_getBlendSource(
 	WC_Kore_Graphics4_PipelineState* self);
@@ -582,33 +612,26 @@ void Kore_Graphics4_PipelineState_setAlphaBlendDestination(
 bool Kore_Graphics4_PipelineState_getColorWriteMaskRed(
 	WC_Kore_Graphics4_PipelineState* self);
 void Kore_Graphics4_PipelineState_setColorWriteMaskRed(
-	WC_Kore_Graphics4_PipelineState* self,
-	bool value);
+	WC_Kore_Graphics4_PipelineState* self, bool value);
 bool Kore_Graphics4_PipelineState_getColorWriteMaskGreen(
 	WC_Kore_Graphics4_PipelineState* self);
 void Kore_Graphics4_PipelineState_setColorWriteMaskGreen(
-	WC_Kore_Graphics4_PipelineState* self,
-	bool value);
+	WC_Kore_Graphics4_PipelineState* self, bool value);
 bool Kore_Graphics4_PipelineState_getColorWriteMaskBlue(
 	WC_Kore_Graphics4_PipelineState* self);
 void Kore_Graphics4_PipelineState_setColorWriteMaskBlue(
-	WC_Kore_Graphics4_PipelineState* self,
-	bool value);
+	WC_Kore_Graphics4_PipelineState* self, bool value);
 bool Kore_Graphics4_PipelineState_getColorWriteMaskAlpha(
 	WC_Kore_Graphics4_PipelineState* self);
 void Kore_Graphics4_PipelineState_setColorWriteMaskAlpha(
-	WC_Kore_Graphics4_PipelineState* self,
-	bool value);
+	WC_Kore_Graphics4_PipelineState* self, bool value);
 bool Kore_Graphics4_PipelineState_getConservativeRasterization(
 	WC_Kore_Graphics4_PipelineState* self);
 void Kore_Graphics4_PipelineState_setConservativeRasterization(
-	WC_Kore_Graphics4_PipelineState* self,
-	bool value);
+	WC_Kore_Graphics4_PipelineState* self, bool value);
 
 //   Shader.h
 /* Kore::Graphics4::Shader */
-struct WC_Kore_Graphics4_Shader;
-typedef struct WC_Kore_Graphics4_Shader WC_Kore_Graphics4_Shader;
 // .. constructors
 WC_Kore_Graphics4_Shader* Kore_Graphics4_Shader_createDLT(
 	void* data, int length, WE_Kore_Graphics4_ShaderType type);
@@ -619,8 +642,6 @@ void Kore_Graphics4_Shader_destroy(
 	WC_Kore_Graphics4_Shader* self);
 
 /* Kore::Graphics4::ConstantLocation */
-struct WC_Kore_Graphics4_ConstantLocation;
-typedef struct WC_Kore_Graphics4_ConstantLocation WC_Kore_Graphics4_ConstantLocation;
 // .. constructors
 WC_Kore_Graphics4_ConstantLocation* Kore_Graphics4_ConstantLocation_create();
 // .. destructor
@@ -629,8 +650,6 @@ void Kore_Graphics4_ConstantLocation_destroy(
 
 //   Texture.h
 /* Kore::Graphics4::TextureUnit */
-struct WC_Kore_Graphics4_TextureUnit;
-typedef struct WC_Kore_Graphics4_TextureUnit WC_Kore_Graphics4_TextureUnit;
 // .. constructors
 WC_Kore_Graphics4_TextureUnit* Kore_Graphics4_TextureUnit_create();
 // .. destructor
@@ -638,8 +657,6 @@ void Kore_Graphics4_TextureUnit_destroy(
 	WC_Kore_Graphics4_TextureUnit* self);
 
 /* Kore::Graphics4::Texture */
-struct WC_Kore_Graphics4_Texture;
-typedef struct WC_Kore_Graphics4_Texture WC_Kore_Graphics4_Texture;
 // .. constructors
 WC_Kore_Graphics4_Texture* Kore_Graphics4_Texture_createWHFR(
 	int width, int height, WE_Kore_Graphics1_Image_Format format, bool readable);
@@ -705,8 +722,6 @@ unsigned Kore_Graphics4_Texture_internalFormat(WC_Kore_Graphics4_Texture* self);
 
 //   TextureArray.h
 /* Kore::Graphics4::TextureArray */
-struct WC_Kore_Graphics4_TextureArray;
-typedef struct WC_Kore_Graphics4_TextureArray WC_Kore_Graphics4_TextureArray;
 // .. constructors
 // TODO: Verify proper handling of WC_Kore_Graphics1_Image**
 WC_Kore_Graphics4_TextureArray* Kore_Graphics4_TextureArray_create(
@@ -717,8 +732,6 @@ void Kore_Graphics4_TextureArray_destroy(
 
 //   VertexStructure.h
 /* Kore::Graphics4::VertexElement */
-struct WC_Kore_Graphics4_VertexElement;
-typedef struct WC_Kore_Graphics4_VertexElement WC_Kore_Graphics4_VertexElement;
 // .. constructors
 WC_Kore_Graphics4_VertexElement* Kore_Graphics4_VertexElement_create();
 WC_Kore_Graphics4_VertexElement* Kore_Graphics4_VertexElement_createND(
@@ -738,8 +751,6 @@ WE_Kore_Graphics4_VertexData Kore_Graphics4_VertexElement_getData(
 	WC_Kore_Graphics4_VertexElement* self);
 
 /* Kore::Graphics4::VertexStructure */
-struct WC_Kore_Graphics4_VertexStructure;
-typedef struct WC_Kore_Graphics4_VertexStructure WC_Kore_Graphics4_VertexStructure;
 // .. constructors
 WC_Kore_Graphics4_VertexStructure* Kore_Graphics4_VertexStructure_create();
 // .. destructor
