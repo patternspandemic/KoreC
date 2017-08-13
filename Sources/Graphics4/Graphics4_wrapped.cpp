@@ -241,34 +241,70 @@ static_assert(
 /* Kore::Graphics4::VertexBuffer */
 
 // .. constructors
-// TODO: How to pass const VertexStructure& structure?
 WC_Kore_Graphics4_VertexBuffer* Kore_Graphics4_VertexBuffer_create(
-	int count, const VertexStructure& structure, int instanceDataStepRate);
+	int count, WC_Kore_Graphics4_VertexStructure* structure,
+	int instanceDataStepRate) {
+	return reinterpret_cast<WC_Kore_Graphics4_VertexBuffer*>(
+		new Kore::Graphics4::VertexBuffer(
+			count,
+			*reinterpret_cast<Kore::Graphics4::VertexStructure*>(structure),
+			instanceDataStepRate));
+}
 
 // .. destructor
-void Kore_Graphics4_VertexBuffer_destroy(WC_Kore_Graphics4_VertexBuffer* self);
+void Kore_Graphics4_VertexBuffer_destroy(WC_Kore_Graphics4_VertexBuffer* self) {
+	delete reinterpret_cast<Kore::Graphics4::VertexBuffer*>(self);
+}
 
 // .. methods
-float* Kore_Graphics4_VertexBuffer_lock(WC_Kore_Graphics4_VertexBuffer* self);
+float* Kore_Graphics4_VertexBuffer_lock(WC_Kore_Graphics4_VertexBuffer* self) {
+	return reinterpret_cast<Kore::Graphics4::VertexBuffer*>(self)->lock();
+}
+
 float* Kore_Graphics4_VertexBuffer_lockSC(
 	WC_Kore_Graphics4_VertexBuffer* self,
-	int start, int count);
-void Kore_Graphics4_VertexBuffer_unlock(WC_Kore_Graphics4_VertexBuffer* self);
-int Kore_Graphics4_VertexBuffer_count(WC_Kore_Graphics4_VertexBuffer* self);
-int Kore_Graphics4_VertexBuffer_stride(WC_Kore_Graphics4_VertexBuffer* self);
+	int start, int count) {
+	return reinterpret_cast<Kore::Graphics4::VertexBuffer*>(self)->lock(
+		start, count);
+}
+
+void Kore_Graphics4_VertexBuffer_unlock(WC_Kore_Graphics4_VertexBuffer* self) {
+	reinterpret_cast<Kore::Graphics4::VertexBuffer*>(self)->unlock();
+}
+
+int Kore_Graphics4_VertexBuffer_count(WC_Kore_Graphics4_VertexBuffer* self) {
+	return reinterpret_cast<Kore::Graphics4::VertexBuffer*>(self)->count();
+}
+
+int Kore_Graphics4_VertexBuffer_stride(WC_Kore_Graphics4_VertexBuffer* self) {
+	return reinterpret_cast<Kore::Graphics4::VertexBuffer*>(self)->stride();
+}
 
 /* Kore::Graphics4::IndexBuffer */
 
 // .. constructors
-WC_Kore_Graphics4_IndexBuffer* Kore_Graphics4_IndexBuffer_create(int count);
+WC_Kore_Graphics4_IndexBuffer* Kore_Graphics4_IndexBuffer_create(int count) {
+	return reinterpret_cast<WC_Kore_Graphics4_IndexBuffer*>(
+		new Kore::Graphics4::IndexBuffer(count));
+}
 
 // .. destructor
-void Kore_Graphics4_IndexBuffer_destroy(WC_Kore_Graphics4_IndexBuffer* self);
+void Kore_Graphics4_IndexBuffer_destroy(WC_Kore_Graphics4_IndexBuffer* self) {
+	delete reinterpret_cast<Kore::Graphics4::IndexBuffer*>(self);
+}
 
 // .. methods
-int* Kore_Graphics4_IndexBuffer_lock(WC_Kore_Graphics4_IndexBuffer* self);
-void Kore_Graphics4_IndexBuffer_unlock(WC_Kore_Graphics4_IndexBuffer* self);
-int Kore_Graphics4_IndexBuffer_count(WC_Kore_Graphics4_IndexBuffer* self);
+int* Kore_Graphics4_IndexBuffer_lock(WC_Kore_Graphics4_IndexBuffer* self) {
+	return reinterpret_cast<Kore::Graphics4::IndexBuffer*>(self)->lock();
+}
+
+void Kore_Graphics4_IndexBuffer_unlock(WC_Kore_Graphics4_IndexBuffer* self) {
+	reinterpret_cast<Kore::Graphics4::IndexBuffer*>(self)->unlock();
+}
+
+int Kore_Graphics4_IndexBuffer_count(WC_Kore_Graphics4_IndexBuffer* self) {
+	return reinterpret_cast<Kore::Graphics4::IndexBuffer*>(self)->count();
+}
 
 /* Kore::Graphics4::RenderTarget */
 
@@ -276,43 +312,90 @@ int Kore_Graphics4_IndexBuffer_count(WC_Kore_Graphics4_IndexBuffer* self);
 WC_Kore_Graphics4_RenderTarget* Kore_Graphics4_RenderTarget_createWHDAFSC(
 	int width, int height, int depthBufferBits, bool antialiasing,
 	WE_Kore_Graphics4_RenderTargetFormat format,
-	int stencilBufferBits, int contextId);
+	int stencilBufferBits, int contextId) {
+	return reinterpret_cast<WC_Kore_Graphics4_RenderTarget*>(
+		new Kore::Graphics4::RenderTarget(
+			width, height, depthBufferBits, antialiasing,
+			(Kore::Graphics4::RenderTargetFormat)format,
+			stencilBufferBits, contextId));
+}
+
 WC_Kore_Graphics4_RenderTarget* Kore_Graphics4_RenderTarget_createCDAFSC(
 	int cubeMapSize, int depthBufferBits, bool antialiasing,
 	WE_Kore_Graphics4_RenderTargetFormat format,
-	int stencilBufferBits, int contextId);
+	int stencilBufferBits, int contextId) {
+	return reinterpret_cast<WC_Kore_Graphics4_RenderTarget*>(
+		new Kore::Graphics4::RenderTarget(
+			cubeMapSize, depthBufferBits, antialiasing,
+			(Kore::Graphics4::RenderTargetFormat)format,
+			stencilBufferBits, contextId));
+}
 
 // .. destructor
-void Kore_Graphics4_RenderTarget_destroy(WC_Kore_Graphics4_RenderTarget* self);
+void Kore_Graphics4_RenderTarget_destroy(WC_Kore_Graphics4_RenderTarget* self) {
+	delete reinterpret_cast<Kore::Graphics4::RenderTarget*>(self);
+}
 
 // .. methods
-// TODO: How to pass unit by value?
 void Kore_Graphics4_RenderTarget_useColorAsTexture(
 	WC_Kore_Graphics4_RenderTarget* self,
-	WC_Kore_Graphics4_TextureUnit* unit);
-// TODO: How to pass unit by value?
+	WC_Kore_Graphics4_TextureUnit* unit) {
+	reinterpret_cast<Kore::Graphics4::RenderTarget*>(self)->useColorAsTexture(
+		*reinterpret_cast<Kore::Graphics4::TextureUnit*>(unit));
+}
+
 void Kore_Graphics4_RenderTarget_useDepthAsTexture(
 	WC_Kore_Graphics4_RenderTarget* self,
-	WC_Kore_Graphics4_TextureUnit* unit);
+	WC_Kore_Graphics4_TextureUnit* unit) {
+	reinterpret_cast<Kore::Graphics4::RenderTarget*>(self)->useDepthAsTexture(
+		*reinterpret_cast<Kore::Graphics4::TextureUnit*>(unit));
+}
+
 void Kore_Graphics4_RenderTarget_setDepthStencilFrom(
 	WC_Kore_Graphics4_RenderTarget* self,
-	WC_Kore_Graphics4_RenderTarget* source);
+	WC_Kore_Graphics4_RenderTarget* source) {
+	reinterpret_cast<Kore::Graphics4::RenderTarget*>(self)->setDepthStencilFrom(
+		reinterpret_cast<Kore::Graphics4::RenderTarget*>(source));
+}
+
 void Kore_Graphics4_RenderTarget_getPixels(
-	WC_Kore_Graphics4_RenderTarget* self, u8* data);
+	WC_Kore_Graphics4_RenderTarget* self, u8* data) {
+	reinterpret_cast<Kore::Graphics4::RenderTarget*>(self)->getPixels(data);
+}
 
 // .. data accessors, TODO: Setter needed?
-int Kore_Graphics4_RenderTarget_getWidth(WC_Kore_Graphics4_RenderTarget* self);
-int Kore_Graphics4_RenderTarget_getHeight(WC_Kore_Graphics4_RenderTarget* self);
+int Kore_Graphics4_RenderTarget_getWidth(WC_Kore_Graphics4_RenderTarget* self) {
+	return reinterpret_cast<Kore::Graphics4::RenderTarget*>(self)->width;
+}
+
+int Kore_Graphics4_RenderTarget_getHeight(WC_Kore_Graphics4_RenderTarget* self) {
+	return reinterpret_cast<Kore::Graphics4::RenderTarget*>(self)->height;
+}
+
 int Kore_Graphics4_RenderTarget_getTexWidth(
-	WC_Kore_Graphics4_RenderTarget* self);
+	WC_Kore_Graphics4_RenderTarget* self) {
+	return reinterpret_cast<Kore::Graphics4::RenderTarget*>(self)->texWidth;
+}
+
 int Kore_Graphics4_RenderTarget_getTexHeight(
-	WC_Kore_Graphics4_RenderTarget* self);
+	WC_Kore_Graphics4_RenderTarget* self) {
+	return reinterpret_cast<Kore::Graphics4::RenderTarget*>(self)->texHeight;
+}
+
 int Kore_Graphics4_RenderTarget_getContextId(
-	WC_Kore_Graphics4_RenderTarget* self);
+	WC_Kore_Graphics4_RenderTarget* self) {
+	return reinterpret_cast<Kore::Graphics4::RenderTarget*>(self)->contextId;
+}
+
 bool Kore_Graphics4_RenderTarget_getIsCubeMap(
-	WC_Kore_Graphics4_RenderTarget* self);
+	WC_Kore_Graphics4_RenderTarget* self) {
+	return reinterpret_cast<Kore::Graphics4::RenderTarget*>(self)->isCubeMap;
+}
+
 bool Kore_Graphics4_RenderTarget_getIsDepthAttachment(
-	WC_Kore_Graphics4_RenderTarget* self);
+	WC_Kore_Graphics4_RenderTarget* self) {
+	return reinterpret_cast<Kore::Graphics4::RenderTarget*>(self)->isDepthAttachment;
+}
 
 /* Functions */
 

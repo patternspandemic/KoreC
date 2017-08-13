@@ -505,7 +505,7 @@ typedef struct WC_Kore_Graphics4_VertexStructure WC_Kore_Graphics4_VertexStructu
 // .. constructors
 // TODO: How to pass const VertexStructure& structure?
 WC_Kore_Graphics4_VertexBuffer* Kore_Graphics4_VertexBuffer_create(
-	int count, const VertexStructure& structure, int instanceDataStepRate);
+	int count, WC_Kore_Graphics4_VertexStructure* structure, int instanceDataStepRate);
 // .. destructor
 void Kore_Graphics4_VertexBuffer_destroy(WC_Kore_Graphics4_VertexBuffer* self);
 // .. methods
