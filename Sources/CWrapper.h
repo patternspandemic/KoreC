@@ -851,56 +851,47 @@ int Kore_Graphics4_VertexStructure_maxElementsCount();
 // Functions:
 
 void Kore_Graphics4_setBool(
-	WC_Kore_Graphics4_ConstantLocation location, bool value);
+	WC_Kore_Graphics4_ConstantLocation* location, bool value);
 void Kore_Graphics4_setInt(
-	WC_Kore_Graphics4_ConstantLocation location, int value);
+	WC_Kore_Graphics4_ConstantLocation* location, int value);
 void Kore_Graphics4_setFloat(
-	WC_Kore_Graphics4_ConstantLocation location, float value);
+	WC_Kore_Graphics4_ConstantLocation* location, float value);
 void Kore_Graphics4_setFloat2(
-	WC_Kore_Graphics4_ConstantLocation location, float value1, float value2);
-void Kore_Graphics4_setFloat2Vec(
-	WC_Kore_Graphics4_ConstantLocation location, vec2 value);
+	WC_Kore_Graphics4_ConstantLocation* location, float value1, float value2);
+// TODO: vec2 to wrapped equiv
+// void Kore_Graphics4_setFloat2Vec(
+// 	WC_Kore_Graphics4_ConstantLocation* location, vec2 value);
 void Kore_Graphics4_setFloat3(
-	WC_Kore_Graphics4_ConstantLocation location,
+	WC_Kore_Graphics4_ConstantLocation* location,
 	float value1, float value2, float value3);
-void Kore_Graphics4_setFloat3Vec(
-	WC_Kore_Graphics4_ConstantLocation location, vec3 value);
+	// TODO: vec3 to wrapped equiv
+// void Kore_Graphics4_setFloat3Vec(
+// 	WC_Kore_Graphics4_ConstantLocation* location, vec3 value);
 void Kore_Graphics4_setFloat4(
-	WC_Kore_Graphics4_ConstantLocation location,
+	WC_Kore_Graphics4_ConstantLocation* location,
 	float value1, float value2, float value3, float value4);
-void Kore_Graphics4_setFloat4Vec(
-	WC_Kore_Graphics4_ConstantLocation location, vec4 value);
+// TODO: vec4 to wrapped equiv
+// void Kore_Graphics4_setFloat4Vec(
+// 	WC_Kore_Graphics4_ConstantLocation* location, vec4 value);
 void Kore_Graphics4_setFloats(
-	WC_Kore_Graphics4_ConstantLocation location, float* floats, int count);
-// TODO: mat3* to *value when passed onto const mat3& value param
-// [void setMatrix(ConstantLocation location, const mat3& value);]
-void Kore_Graphics4_setMatrix3(
-	WC_Kore_Graphics4_ConstantLocation location, mat3* value);
-// TODO: mat4* to *value when passed onto const mat4& value param
-// [void setMatrix(ConstantLocation location, const mat4& value);]
-void Kore_Graphics4_setMatrix4(
-	WC_Kore_Graphics4_ConstantLocation location, mat4* value);
+	WC_Kore_Graphics4_ConstantLocation* location, float* floats, int count);
+// TODO: mat3 to wrapped equiv
+// void Kore_Graphics4_setMatrix3(
+// 	WC_Kore_Graphics4_ConstantLocation* location, mat3* value);
+// TODO: mat4 to wrapped equiv
+// void Kore_Graphics4_setMatrix4(
+// 	WC_Kore_Graphics4_ConstantLocation* location, mat4* value);
 
-// TODO: Pass dereffed vertexBuffer onto call after reinterp-cast
-// [void setVertexBuffer(VertexBuffer& vertexBuffer);]
 void Kore_Graphics4_setVertexBuffer(
 	WC_Kore_Graphics4_VertexBuffer* vertexBuffer);
 void Kore_Graphics4_setVertexBuffers(
 	WC_Kore_Graphics4_VertexBuffer** vertexBuffers, int count);
-// TODO: Pass dereffed indexBuffer onto call after reinterp-cast
-// [void setIndexBuffer(IndexBuffer& indexBuffer);]
 void Kore_Graphics4_setIndexBuffer(
 	WC_Kore_Graphics4_IndexBuffer* indexBuffer);
-// TODO: Pass dereffed unit onto call after reinterp-cast
-// [void setTexture(TextureUnit unit, Texture* texture);]
 void Kore_Graphics4_setTexture(
 	WC_Kore_Graphics4_TextureUnit* unit, WC_Kore_Graphics4_Texture* texture);
-// TODO: Pass dereffed unit onto call after reinterp-cast
-// [void setTextureArray(TextureUnit unit, TextureArray* array);]
 void Kore_Graphics4_setTextureArray(
 	WC_Kore_Graphics4_TextureUnit* unit, WC_Kore_Graphics4_TextureArray* array);
-// TODO: Pass dereffed unit onto call after reinterp-cast
-// [void setImageTexture(TextureUnit unit, Texture* texture);]
 void Kore_Graphics4_setImageTexture(
 	WC_Kore_Graphics4_TextureUnit* unit, WC_Kore_Graphics4_Texture* texture);
 void Kore_Graphics4_setPipeline(WC_Kore_Graphics4_PipelineState* pipeline);
@@ -938,37 +929,29 @@ void Kore_Graphics4_viewport(int x, int y, int width, int height);
 void Kore_Graphics4_scissor(int x, int y, int width, int height);
 void Kore_Graphics4_disableScissor();
 
-// TODO: Pass dereffed unit onto call after reinterp-cast
 void Kore_Graphics4_setTextureAddressing(
 	WC_Kore_Graphics4_TextureUnit* unit,
 	WE_Kore_Graphics4_TexDir dir,
 	WE_Kore_Graphics4_TextureAddressing addressing);
-// TODO: Pass dereffed unit onto call after reinterp-cast
 void Kore_Graphics4_setTextureMagnificationFilter(
 	WC_Kore_Graphics4_TextureUnit* texunit,
 	WE_Kore_Graphics4_TextureFilter filter);
-// TODO: Pass dereffed unit onto call after reinterp-cast
 void Kore_Graphics4_setTextureMinificationFilter(
 	WC_Kore_Graphics4_TextureUnit* texunit,
 	WE_Kore_Graphics4_TextureFilter filter);
-// TODO: Pass dereffed unit onto call after reinterp-cast
 void Kore_Graphics4_setTextureMipmapFilter(
 	WC_Kore_Graphics4_TextureUnit* texunit,
 	WE_Kore_Graphics4_MipmapFilter filter);
-// TODO: Pass dereffed unit onto call after reinterp-cast
 void Kore_Graphics4_setTexture3DAddressing(
 	WC_Kore_Graphics4_TextureUnit* unit,
 	WE_Kore_Graphics4_TexDir dir,
 	WE_Kore_Graphics4_TextureAddressing addressing);
-// TODO: Pass dereffed unit onto call after reinterp-cast
 void Kore_Graphics4_setTexture3DMagnificationFilter(
 	WC_Kore_Graphics4_TextureUnit* texunit,
 	WE_Kore_Graphics4_TextureFilter filter);
-// TODO: Pass dereffed unit onto call after reinterp-cast
 void Kore_Graphics4_setTexture3DMinificationFilter(
 	WC_Kore_Graphics4_TextureUnit* texunit,
 	WE_Kore_Graphics4_TextureFilter filter);
-// TODO: Pass dereffed unit onto call after reinterp-cast
 void Kore_Graphics4_setTexture3DMipmapFilter(
 	WC_Kore_Graphics4_TextureUnit* texunit,
 	WE_Kore_Graphics4_MipmapFilter filter);
@@ -997,7 +980,7 @@ void Kore_Graphics4_init(
 	int windowId, int depthBufferBits, int stencilBufferBits, bool vsync);
 void Kore_Graphics4_destroy(int windowId);
 
-extern bool fullscreen;
+bool Kore_Graphics4_getFullscreen();
 
 void Kore_Graphics4_flush();
 
