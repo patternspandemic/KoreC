@@ -178,9 +178,11 @@ void Kore_System_dropFilesCallback(wchar_t* filePath);
 
 /**** Random ****/
 
-// Kore::Random::init -0
-// void Kore_Random_init(int seed);
 void Kore_Random_init();
+void Kore_Random_initSeed(int seed);
+s32 Kore_Random_get();
+s32 Kore_Random_getMax(s32 max);
+s32 Kore_Random_getMinMax(s32 min, s32 max);
 
 /****************/
 

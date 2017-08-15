@@ -11,11 +11,24 @@
 extern "C" {
 #endif
 
-// Kore::Random::init
-// void Kore_Random_init(int seed) {
 void Kore_Random_init() {
-  // Kore::Random::init(seed);
   Kore::Random::init(static_cast<int>(Kore::System::timestamp() % std::numeric_limits<int>::max()));
+}
+
+void Kore_Random_initSeed(int seed) {
+  Kore::Random::init(seed);
+}
+
+s32 Kore_Random_get() {
+	return Kore::Random::get();
+}
+
+s32 Kore_Random_getMax(s32 max) {
+	return Kore::Random::get(max);
+}
+
+s32 Kore_Random_getMinMax(s32 min, s32 max) {
+	return Kore::Random::get(min, max);
 }
 
 #ifdef __cplusplus
