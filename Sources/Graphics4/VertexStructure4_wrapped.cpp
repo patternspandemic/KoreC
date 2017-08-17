@@ -113,15 +113,33 @@ const char* Kore_Graphics4_VertexElement_getName(
   return reinterpret_cast<Kore::Graphics4::VertexElement*>(self)->name;
 }
 
+void Kore_Graphics4_VertexElement_setName(
+	WC_Kore_Graphics4_VertexElement* self, const char* name) {
+  reinterpret_cast<Kore::Graphics4::VertexElement*>(self)->name = name;
+}
+
 WE_Kore_Graphics4_VertexAttribute Kore_Graphics4_VertexElement_getAttribute(
 	WC_Kore_Graphics4_VertexElement* self) {
   return (WE_Kore_Graphics4_VertexAttribute)reinterpret_cast<Kore::Graphics4::VertexElement*>(self)->attribute;
+}
+
+void Kore_Graphics4_VertexElement_setAttribute(
+	WC_Kore_Graphics4_VertexElement* self,
+	WE_Kore_Graphics4_VertexAttribute attribute) {
+  reinterpret_cast<Kore::Graphics4::VertexElement*>(self)->attribute = (Kore::Graphics4::VertexAttribute)attribute;
 }
 
 WE_Kore_Graphics4_VertexData Kore_Graphics4_VertexElement_getData(
 	WC_Kore_Graphics4_VertexElement* self) {
   return (WE_Kore_Graphics4_VertexData)reinterpret_cast<Kore::Graphics4::VertexElement*>(self)->data;
 }
+
+void Kore_Graphics4_VertexElement_setData(
+	WC_Kore_Graphics4_VertexElement* self,
+	WE_Kore_Graphics4_VertexData data) {
+  reinterpret_cast<Kore::Graphics4::VertexElement*>(self)->data = (Kore::Graphics4::VertexData)data;
+}
+
 
 /* Kore::Graphics4::VertexStructure */
 
@@ -173,6 +191,12 @@ bool Kore_Graphics4_VertexStructure_getInstanced(
 	WC_Kore_Graphics4_VertexStructure* self) {
   return reinterpret_cast<Kore::Graphics4::VertexStructure*>(self)->instanced;
 }
+
+// TODO: Kore_Graphics4_VertexStructure_setInstanced needed?
+// void Kore_Graphics4_VertexStructure_setInstanced(
+// 	WC_Kore_Graphics4_VertexStructure* self, bool value) {
+//   reinterpret_cast<Kore::Graphics4::VertexStructure*>(self)->instanced = value;
+// }
 
 // .. static members
 int Kore_Graphics4_VertexStructure_maxElementsCount() {

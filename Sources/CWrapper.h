@@ -817,13 +817,21 @@ WC_Kore_Graphics4_VertexElement* Kore_Graphics4_VertexElement_createAD(
 // .. destructor
 void Kore_Graphics4_VertexElement_destroy(
 	WC_Kore_Graphics4_VertexElement* self);
-// .. data accessors, TODO: Setter needed?
+// .. data accessors
 const char* Kore_Graphics4_VertexElement_getName(
 	WC_Kore_Graphics4_VertexElement* self);
+void Kore_Graphics4_VertexElement_setName(
+	WC_Kore_Graphics4_VertexElement* self, const char* name);
 WE_Kore_Graphics4_VertexAttribute Kore_Graphics4_VertexElement_getAttribute(
 	WC_Kore_Graphics4_VertexElement* self);
+void Kore_Graphics4_VertexElement_setAttribute(
+	WC_Kore_Graphics4_VertexElement* self,
+	WE_Kore_Graphics4_VertexAttribute attribute);
 WE_Kore_Graphics4_VertexData Kore_Graphics4_VertexElement_getData(
 	WC_Kore_Graphics4_VertexElement* self);
+void Kore_Graphics4_VertexElement_setData(
+	WC_Kore_Graphics4_VertexElement* self,
+	WE_Kore_Graphics4_VertexData data);
 
 /* Kore::Graphics4::VertexStructure */
 // .. constructors
@@ -839,7 +847,7 @@ void Kore_Graphics4_VertexStructure_addAD(
 	WC_Kore_Graphics4_VertexStructure* self,
 	WE_Kore_Graphics4_VertexAttribute attribute,
 	WE_Kore_Graphics4_VertexData data);
-// .. data accessors, TODO: Setter needed? I think not.
+// .. data accessors
 // TODO: Verify return type of Kore_Graphics4_VertexStructure_getElements
 WC_Kore_Graphics4_VertexElement** Kore_Graphics4_VertexStructure_getElements(
 	WC_Kore_Graphics4_VertexStructure* self);
@@ -847,6 +855,9 @@ int Kore_Graphics4_VertexStructure_getSize(
 	WC_Kore_Graphics4_VertexStructure* self);
 bool Kore_Graphics4_VertexStructure_getInstanced(
 	WC_Kore_Graphics4_VertexStructure* self);
+// TODO: Kore_Graphics4_VertexStructure_setInstanced needed?
+// void Kore_Graphics4_VertexStructure_setInstanced(
+// 	WC_Kore_Graphics4_VertexStructure* self, bool value);
 // .. static members
 int Kore_Graphics4_VertexStructure_maxElementsCount();
 
