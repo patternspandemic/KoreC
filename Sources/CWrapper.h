@@ -256,18 +256,18 @@ void Kore_Graphics1_Image_destroy(WC_Kore_Graphics1_Image* self);
 // .. methods
 int Kore_Graphics1_Image_at(WC_Kore_Graphics1_Image* self, int x, int y);
 // .. data accessors
-int Kore_Graphics1_Image_width(WC_Kore_Graphics1_Image* self);
-int Kore_Graphics1_Image_height(WC_Kore_Graphics1_Image* self);
-int Kore_Graphics1_Image_depth(WC_Kore_Graphics1_Image* self);
-WE_Kore_Graphics1_Image_Format Kore_Graphics1_Image_format(
+int Kore_Graphics1_Image_getWidth(WC_Kore_Graphics1_Image* self);
+int Kore_Graphics1_Image_getHeight(WC_Kore_Graphics1_Image* self);
+int Kore_Graphics1_Image_getDepth(WC_Kore_Graphics1_Image* self);
+WE_Kore_Graphics1_Image_Format Kore_Graphics1_Image_getFormat(
 	WC_Kore_Graphics1_Image* self);
-bool Kore_Graphics1_Image_readable(WC_Kore_Graphics1_Image* self);
-WE_Kore_Graphics1_ImageCompression Kore_Graphics1_Image_compression(
+bool Kore_Graphics1_Image_getReadable(WC_Kore_Graphics1_Image* self);
+WE_Kore_Graphics1_ImageCompression Kore_Graphics1_Image_getCompression(
 	WC_Kore_Graphics1_Image* self);
-u8* Kore_Graphics1_Image_data(WC_Kore_Graphics1_Image* self);
-float* Kore_Graphics1_Image_hdrData(WC_Kore_Graphics1_Image* self);
-int Kore_Graphics1_Image_dataSize(WC_Kore_Graphics1_Image* self);
-unsigned Kore_Graphics1_Image_internalFormat(WC_Kore_Graphics1_Image* self);
+u8* Kore_Graphics1_Image_getData(WC_Kore_Graphics1_Image* self);
+float* Kore_Graphics1_Image_getHdrData(WC_Kore_Graphics1_Image* self);
+int Kore_Graphics1_Image_getDataSize(WC_Kore_Graphics1_Image* self);
+unsigned Kore_Graphics1_Image_getInternalFormat(WC_Kore_Graphics1_Image* self);
 // .. static members
 int Kore_Graphics1_Image_sizeOf(WE_Kore_Graphics1_Image_Format format);
 
@@ -785,15 +785,15 @@ int Kore_Graphics4_Texture_getTexDepth(WC_Kore_Graphics4_Texture* self);
 int Kore_Graphics4_Texture_getWidth(WC_Kore_Graphics4_Texture* self);
 int Kore_Graphics4_Texture_getHeight(WC_Kore_Graphics4_Texture* self);
 int Kore_Graphics4_Texture_getDepth(WC_Kore_Graphics4_Texture* self);
-WE_Kore_Graphics1_Image_Format Kore_Graphics4_Texture_format(
+WE_Kore_Graphics1_Image_Format Kore_Graphics4_Texture_getFormat(
 	WC_Kore_Graphics4_Texture* self);
-bool Kore_Graphics4_Texture_readable(WC_Kore_Graphics4_Texture* self);
-WE_Kore_Graphics1_ImageCompression Kore_Graphics4_Texture_compression(
+bool Kore_Graphics4_Texture_getReadable(WC_Kore_Graphics4_Texture* self);
+WE_Kore_Graphics1_ImageCompression Kore_Graphics4_Texture_getCompression(
 	WC_Kore_Graphics4_Texture* self);
-u8* Kore_Graphics4_Texture_data(WC_Kore_Graphics4_Texture* self);
-float* Kore_Graphics4_Texture_hdrData(WC_Kore_Graphics4_Texture* self);
-int Kore_Graphics4_Texture_dataSize(WC_Kore_Graphics4_Texture* self);
-unsigned Kore_Graphics4_Texture_internalFormat(WC_Kore_Graphics4_Texture* self);
+u8* Kore_Graphics4_Texture_getData(WC_Kore_Graphics4_Texture* self);
+float* Kore_Graphics4_Texture_getHdrData(WC_Kore_Graphics4_Texture* self);
+int Kore_Graphics4_Texture_getDataSize(WC_Kore_Graphics4_Texture* self);
+unsigned Kore_Graphics4_Texture_getInternalFormat(WC_Kore_Graphics4_Texture* self);
 
 //   TextureArray.h
 /* Kore::Graphics4::TextureArray */
