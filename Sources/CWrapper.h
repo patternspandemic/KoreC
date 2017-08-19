@@ -583,6 +583,9 @@ WC_Kore_Graphics4_ConstantLocation* Kore_Graphics4_PipelineState_getConstantLoca
 	WC_Kore_Graphics4_PipelineState* self, const char* name);
 WC_Kore_Graphics4_TextureUnit* Kore_Graphics4_PipelineState_getTextureUnit(
 	WC_Kore_Graphics4_PipelineState* self, const char* name);
+void Kore_Graphics4_PipelineState_setInputLayoutAt(
+	WC_Kore_Graphics4_PipelineState* self, int index,
+	WC_Kore_Graphics4_VertexStructure* vertexStructure);
 // .. data accessors
 // TODO: Verify WC_Kore_Graphics4_VertexStructure** return
 WC_Kore_Graphics4_VertexStructure** Kore_Graphics4_PipelineState_getInputLayout(
@@ -750,11 +753,9 @@ WC_Kore_Graphics4_Texture* Kore_Graphics4_Texture_createDWHDFR(
 void Kore_Graphics4_Texture_destroy(
 	WC_Kore_Graphics4_Texture* self);
 // .. methods
-// TODO: Deref WC_Kore_Graphics4_TextureUnit* to pass by val parameter?
 // TODO: Remove?
 void Kore_Graphics4_Texture__set(
 	WC_Kore_Graphics4_Texture* self, WC_Kore_Graphics4_TextureUnit* unit);
-// TODO: Deref WC_Kore_Graphics4_TextureUnit* to pass by val parameter?
 // TODO: Remove?
 void Kore_Graphics4_Texture__setImage(
 	WC_Kore_Graphics4_Texture* self, WC_Kore_Graphics4_TextureUnit* unit);
@@ -855,9 +856,8 @@ int Kore_Graphics4_VertexStructure_getSize(
 	WC_Kore_Graphics4_VertexStructure* self);
 bool Kore_Graphics4_VertexStructure_getInstanced(
 	WC_Kore_Graphics4_VertexStructure* self);
-// TODO: Kore_Graphics4_VertexStructure_setInstanced needed?
-// void Kore_Graphics4_VertexStructure_setInstanced(
-// 	WC_Kore_Graphics4_VertexStructure* self, bool value);
+void Kore_Graphics4_VertexStructure_setInstanced(
+	WC_Kore_Graphics4_VertexStructure* self, bool value);
 // .. static members
 int Kore_Graphics4_VertexStructure_maxElementsCount();
 

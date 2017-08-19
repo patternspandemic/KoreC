@@ -192,11 +192,10 @@ bool Kore_Graphics4_VertexStructure_getInstanced(
   return reinterpret_cast<Kore::Graphics4::VertexStructure*>(self)->instanced;
 }
 
-// TODO: Kore_Graphics4_VertexStructure_setInstanced needed?
-// void Kore_Graphics4_VertexStructure_setInstanced(
-// 	WC_Kore_Graphics4_VertexStructure* self, bool value) {
-//   reinterpret_cast<Kore::Graphics4::VertexStructure*>(self)->instanced = value;
-// }
+void Kore_Graphics4_VertexStructure_setInstanced(
+	WC_Kore_Graphics4_VertexStructure* self, bool value) {
+  reinterpret_cast<Kore::Graphics4::VertexStructure*>(self)->instanced = value;
+}
 
 // .. static members
 int Kore_Graphics4_VertexStructure_maxElementsCount() {

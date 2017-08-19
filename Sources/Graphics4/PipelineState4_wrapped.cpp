@@ -1,6 +1,7 @@
 #include <Kore/pch.h>
 #include <Kore/Graphics4/Graphics.h>
 #include <Kore/Graphics4/Shader.h>
+#include <Kore/Graphics4/VertexStructure.h>
 #include <Kore/Graphics4/PipelineState.h>
 
 #include "../CWrapper.h"
@@ -47,6 +48,12 @@ WC_Kore_Graphics4_TextureUnit* Kore_Graphics4_PipelineState_getTextureUnit(
 			reinterpret_cast<Kore::Graphics4::PipelineState*>(self)->getTextureUnit(name)
 		)
 	);
+}
+
+void Kore_Graphics4_PipelineState_setInputLayoutAt(
+	WC_Kore_Graphics4_PipelineState* self, int index,
+	WC_Kore_Graphics4_VertexStructure* vertexStructure) {
+	reinterpret_cast<Kore::Graphics4::PipelineState*>(self)->inputLayout[index] = reinterpret_cast<Kore::Graphics4::VertexStructure*>(vertexStructure);
 }
 
 // .. data accessors
