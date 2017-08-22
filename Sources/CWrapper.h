@@ -542,11 +542,9 @@ WC_Kore_Graphics4_RenderTarget* Kore_Graphics4_RenderTarget_createCDAFSC(
 // .. destructor
 void Kore_Graphics4_RenderTarget_destroy(WC_Kore_Graphics4_RenderTarget* self);
 // .. methods
-// TODO: How to pass unit by value?
 void Kore_Graphics4_RenderTarget_useColorAsTexture(
 	WC_Kore_Graphics4_RenderTarget* self,
 	WC_Kore_Graphics4_TextureUnit* unit);
-// TODO: How to pass unit by value?
 void Kore_Graphics4_RenderTarget_useDepthAsTexture(
 	WC_Kore_Graphics4_RenderTarget* self,
 	WC_Kore_Graphics4_TextureUnit* unit);
