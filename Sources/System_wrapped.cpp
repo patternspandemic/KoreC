@@ -2,6 +2,7 @@
 #include <Kore/Math/Vector.h>
 #include <Kore/Window.h>
 #include <Kore/System.h>
+#include <Kore/Graphics4/Graphics.h>
 
 #include <assert.h>
 
@@ -31,9 +32,38 @@ static void setOrientationCallback_translator(Kore::Orientation orientation) {
 	wrapped_setOrientationCallback((WE_Kore_Orientation)orientation);
 }
 
+// TODO: Explain Kore System Object
+// typedef void (*KORESYSTEMOBJECTCALLBACK)(KoreSystemObject*);
+typedef void (*KORESYSTEMOBJECTCALLBACK)(KoreSystemObject);
+static KORESYSTEMOBJECTCALLBACK _koreSystemObjectCallback;
+// static KoreSystemObject* koreSystemObject;
+static KoreSystemObject _koreSystemObject;
+
+static void koreSystemObjectUpdateCallback() {
+	// TODO: Support pause/resume,  backgroung/forground, multiple windows.
+	// - see: https://github.com/Kode/Kha/blob/master/Backends/Kore/main.cpp#L125
+	// if paused return
+	// for each window, if its visible
+	Kore::Graphics4::begin();
+	_koreSystemObjectCallback(_koreSystemObject);
+	Kore::Graphics4::end();
+	Kore::Graphics4::swapBuffers();
+}
+
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+void Kore_System__updateWithSystemObject(
+	// KoreSystemObject* systemObject,
+	KoreSystemObject systemObject,
+	// void (*systemCallback)(KoreSystemObject*))
+	void (*systemCallback)(KoreSystemObject))
+{
+	_koreSystemObject = systemObject;
+	_koreSystemObjectCallback = systemCallback;
+	Kore::System::setCallback(koreSystemObjectUpdateCallback);
+}
 
 void Kore_System_init(const char* name, int width, int height) {
 	Kore::System::init(name, width, height);
