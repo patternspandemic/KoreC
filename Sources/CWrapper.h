@@ -84,9 +84,6 @@ void Kore_WindowOptions_default(WS_Kore_WindowOptions* wo);
 
 /**** System ****/
 
-// TODO: Use void* instead of struct?
-// struct KoreSystemObject;
-// typedef struct KoreSystemObject KoreSystemObject;
 typedef void* KoreSystemObject;
 
 typedef unsigned long long ticks;
@@ -104,7 +101,7 @@ typedef enum WE_Kore_Orientation {
 	// void (*systemCallback)(KoreSystemObject*));
 void Kore_System__updateWithSystemObject(
 	KoreSystemObject systemObject,
-	void (*systemCallback)(KoreSystemObject));
+	void (*systemCallback)(KoreSystemObject, int));
 
 void Kore_System_init(const char* name, int width, int height);
 

@@ -33,21 +33,28 @@ static void setOrientationCallback_translator(Kore::Orientation orientation) {
 }
 
 // TODO: Explain Kore System Object
-// typedef void (*KORESYSTEMOBJECTCALLBACK)(KoreSystemObject*);
-typedef void (*KORESYSTEMOBJECTCALLBACK)(KoreSystemObject);
+typedef void (*KORESYSTEMOBJECTCALLBACK)(KoreSystemObject, int);
 static KORESYSTEMOBJECTCALLBACK _koreSystemObjectCallback;
-// static KoreSystemObject* koreSystemObject;
 static KoreSystemObject _koreSystemObject;
 
 static void koreSystemObjectUpdateCallback() {
 	// TODO: Support pause/resume,  backgroung/forground, multiple windows.
 	// - see: https://github.com/Kode/Kha/blob/master/Backends/Kore/main.cpp#L125
-	// if paused return
+
+	// if (paused) return;
+	// Kore::Audio2::update()
+
 	// for each window, if its visible
-	Kore::Graphics4::begin();
-	_koreSystemObjectCallback(_koreSystemObject);
-	Kore::Graphics4::end();
-	Kore::Graphics4::swapBuffers();
+	int windowCount = Kore::System::windowCount();
+
+	for (int windowIndex = 0; windowIndex < windowCount; ++windowIndex) {
+		// if (visible) {
+			Kore::Graphics4::begin(windowIndex);
+			_koreSystemObjectCallback(_koreSystemObject, windowIndex);
+			Kore::Graphics4::end(windowIndex);
+			Kore::Graphics4::swapBuffers(windowIndex);
+		// }
+	}
 }
 
 #ifdef __cplusplus
@@ -55,10 +62,8 @@ extern "C" {
 #endif
 
 void Kore_System__updateWithSystemObject(
-	// KoreSystemObject* systemObject,
 	KoreSystemObject systemObject,
-	// void (*systemCallback)(KoreSystemObject*))
-	void (*systemCallback)(KoreSystemObject))
+	void (*systemCallback)(KoreSystemObject, int))
 {
 	_koreSystemObject = systemObject;
 	_koreSystemObjectCallback = systemCallback;
