@@ -238,6 +238,8 @@ typedef struct WC_Kore_Graphics1_Image WC_Kore_Graphics1_Image;
 WC_Kore_Graphics1_Color* Kore_Graphics1_Color_create(uint color);
 // .. destructor, TODO: Kore_Graphics1_Color_destroy needed with no dynallocs?
 void Kore_Graphics1_Color_destroy(WC_Kore_Graphics1_Color* self);
+// .. data accessors
+// TODO: getters/setters for R, G, B, A floats
 // .. static members
 // TODO: A bunch of colors in hex
 

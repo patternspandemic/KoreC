@@ -56,6 +56,9 @@ void Kore_Graphics1_Color_destroy(WC_Kore_Graphics1_Color* self) {
 	delete reinterpret_cast<Kore::Graphics1::Color*>(self);
 }
 
+// .. data accessors
+// TODO: getters/setters for R, G, B, A floats
+
 // .. static members
 // TODO: A bunch of colors in hex, perhaps not useful
 
