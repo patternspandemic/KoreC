@@ -32,6 +32,64 @@ typedef s32 sint; // 4 Byte
 extern "C" {
 #endif
 
+// Opaque Types to represent classes:
+
+/* Kore::Graphics1::Color */
+struct WC_Kore_Graphics1_Color;
+typedef struct WC_Kore_Graphics1_Color WC_Kore_Graphics1_Color;
+/* Kore::Graphics1::Image */
+struct WC_Kore_Graphics1_Image;
+typedef struct WC_Kore_Graphics1_Image WC_Kore_Graphics1_Image;
+
+/* Kore::Graphics2::ImageShaderPainter */
+struct WC_Kore_Graphics2_ImageShaderPainter;
+typedef struct WC_Kore_Graphics2_ImageShaderPainter WC_Kore_Graphics2_ImageShaderPainter;
+/* Kore::Graphics2::ColoredShaderPainter */
+struct WC_Kore_Graphics2_ColoredShaderPainter;
+typedef struct WC_Kore_Graphics2_ColoredShaderPainter WC_Kore_Graphics2_ColoredShaderPainter;
+/* Kore::Graphics2::TextShaderPainter */
+struct WC_Kore_Graphics2_TextShaderPainter;
+typedef struct WC_Kore_Graphics2_TextShaderPainter WC_Kore_Graphics2_TextShaderPainter;
+/* Kore::Graphics2::Graphics2 */
+struct WC_Kore_Graphics2_Graphics2;
+typedef struct WC_Kore_Graphics2_Graphics2 WC_Kore_Graphics2_Graphics2;
+
+/* Kore::Graphics4::VertexBuffer */
+struct WC_Kore_Graphics4_VertexBuffer;
+typedef struct WC_Kore_Graphics4_VertexBuffer WC_Kore_Graphics4_VertexBuffer;
+/* Kore::Graphics4::IndexBuffer */
+struct WC_Kore_Graphics4_IndexBuffer;
+typedef struct WC_Kore_Graphics4_IndexBuffer WC_Kore_Graphics4_IndexBuffer;
+/* Kore::Graphics4::RenderTarget */
+struct WC_Kore_Graphics4_RenderTarget;
+typedef struct WC_Kore_Graphics4_RenderTarget WC_Kore_Graphics4_RenderTarget;
+/* Kore::Graphics4::PipelineState */
+struct WC_Kore_Graphics4_PipelineState;
+typedef struct WC_Kore_Graphics4_PipelineState WC_Kore_Graphics4_PipelineState;
+/* Kore::Graphics4::Shader */
+struct WC_Kore_Graphics4_Shader;
+typedef struct WC_Kore_Graphics4_Shader WC_Kore_Graphics4_Shader;
+/* Kore::Graphics4::ConstantLocation */
+struct WC_Kore_Graphics4_ConstantLocation;
+typedef struct WC_Kore_Graphics4_ConstantLocation WC_Kore_Graphics4_ConstantLocation;
+/* Kore::Graphics4::TextureUnit */
+struct WC_Kore_Graphics4_TextureUnit;
+typedef struct WC_Kore_Graphics4_TextureUnit WC_Kore_Graphics4_TextureUnit;
+/* Kore::Graphics4::Texture */
+struct WC_Kore_Graphics4_Texture;
+typedef struct WC_Kore_Graphics4_Texture WC_Kore_Graphics4_Texture;
+/* Kore::Graphics4::TextureArray */
+struct WC_Kore_Graphics4_TextureArray;
+typedef struct WC_Kore_Graphics4_TextureArray WC_Kore_Graphics4_TextureArray;
+/* Kore::Graphics4::VertexElement */
+struct WC_Kore_Graphics4_VertexElement;
+typedef struct WC_Kore_Graphics4_VertexElement WC_Kore_Graphics4_VertexElement;
+/* Kore::Graphics4::VertexStructure */
+struct WC_Kore_Graphics4_VertexStructure;
+typedef struct WC_Kore_Graphics4_VertexStructure WC_Kore_Graphics4_VertexStructure;
+
+/****************/
+
 
 
 
@@ -222,15 +280,6 @@ typedef enum WE_Kore_Graphics1_Image_Format {
 	WE_FormatA16 = 7,
 } WE_Kore_Graphics1_Image_Format;
 
-// Opaque Types to represent classes:
-
-/* Kore::Graphics1::Color */
-struct WC_Kore_Graphics1_Color;
-typedef struct WC_Kore_Graphics1_Color WC_Kore_Graphics1_Color;
-/* Kore::Graphics1::Image */
-struct WC_Kore_Graphics1_Image;
-typedef struct WC_Kore_Graphics1_Image WC_Kore_Graphics1_Image;
-
 // Classes:
 
 /* Kore::Graphics1::Color */
@@ -297,21 +346,6 @@ typedef enum WE_Kore_Graphics2_ImageScaleQuality {
 	WE_ImageScaleQualityHigh = 1,
 } WE_Kore_Graphics2_ImageScaleQuality;
 
-// Opaque Types to represent classes:
-
-/* Kore::Graphics2::ImageShaderPainter */
-struct WC_Kore_Graphics2_ImageShaderPainter;
-typedef struct WC_Kore_Graphics2_ImageShaderPainter WC_Kore_Graphics2_ImageShaderPainter;
-/* Kore::Graphics2::ColoredShaderPainter */
-struct WC_Kore_Graphics2_ColoredShaderPainter;
-typedef struct WC_Kore_Graphics2_ColoredShaderPainter WC_Kore_Graphics2_ColoredShaderPainter;
-/* Kore::Graphics2::TextShaderPainter */
-struct WC_Kore_Graphics2_TextShaderPainter;
-typedef struct WC_Kore_Graphics2_TextShaderPainter WC_Kore_Graphics2_TextShaderPainter;
-/* Kore::Graphics2::Graphics2 */
-struct WC_Kore_Graphics2_Graphics2;
-typedef struct WC_Kore_Graphics2_Graphics2 WC_Kore_Graphics2_Graphics2;
-
 // Classes:
 // .. constructors
 // .. destructor
@@ -332,60 +366,90 @@ WC_Kore_Graphics2_Graphics2* Kore_Graphics2_Graphics2_create(
 void Kore_Graphics2_Graphics2_destroy(WC_Kore_Graphics2_Graphics2* self);
 // .. methods
 void Kore_Graphics2_Graphics2_drawTexture( // drawImage
+	WC_Kore_Graphics2_Graphics2* self,
 	WC_Kore_Graphics4_Texture* img,
 	float x, float y);
 void Kore_Graphics2_Graphics2_drawScaledSubTexture( // drawScaledSubImage
+	WC_Kore_Graphics2_Graphics2* self,
 	WC_Kore_Graphics4_Texture* img,
 	float sx, float sy, float sw, float sh,
 	float dx, float dy, float dw, float dh);
 void Kore_Graphics2_Graphics2_drawRenderTarget( // drawImage
+	WC_Kore_Graphics2_Graphics2* self,
 	WC_Kore_Graphics4_RenderTarget* img,
 	float x, float y);
 void Kore_Graphics2_Graphics2_drawScaledSubRenderTarget( // drawScaledSubImage
+	WC_Kore_Graphics2_Graphics2* self,
 	WC_Kore_Graphics4_RenderTarget* img,
 	float sx, float sy, float sw, float sh,
 	float dx, float dy, float dw, float dh);
 void Kore_Graphics2_Graphics2_drawRect(
+	WC_Kore_Graphics2_Graphics2* self,
 	float x, float y, float width, float height, float strength);
 void Kore_Graphics2_Graphics2_fillRect(
+	WC_Kore_Graphics2_Graphics2* self,
 	float x, float y, float width, float height);
-void Kore_Graphics2_Graphics2_drawStringTXY(const char* text, float x, float y);
+void Kore_Graphics2_Graphics2_drawStringTXY(
+	WC_Kore_Graphics2_Graphics2* self,
+	const char* text, float x, float y);
 void Kore_Graphics2_Graphics2_drawStringTLXY(
+	WC_Kore_Graphics2_Graphics2* self,
 	const char* text, int length, float x, float y);
 void Kore_Graphics2_Graphics2_drawLine(
+	WC_Kore_Graphics2_Graphics2* self,
 	float x1, float y1, float x2, float y2, float strength);
 void Kore_Graphics2_Graphics2_fillTriangle(
+	WC_Kore_Graphics2_Graphics2* self,
 	float x1, float y1, float x2, float y2, float x3, float y3);
 void Kore_Graphics2_Graphics2_setPipeline(
+	WC_Kore_Graphics2_Graphics2* self,
 	WC_Kore_Graphics4_PipelineState* pipeline);
-void Kore_Graphics2_Graphics2_scissor(int x, int y, int width, int height);
-void Kore_Graphics2_Graphics2_disableScissor();
+void Kore_Graphics2_Graphics2_scissor(
+	WC_Kore_Graphics2_Graphics2* self,
+	int x, int y, int width, int height);
+void Kore_Graphics2_Graphics2_disableScissor(WC_Kore_Graphics2_Graphics2* self);
 void Kore_Graphics2_Graphics2_begin(
+	WC_Kore_Graphics2_Graphics2* self,
 	bool renderTargets, int width, int height, bool clear, uint clearColor);
-void Kore_Graphics2_Graphics2_clear(uint color);
-void Kore_Graphics2_Graphics2_flush();
-void Kore_Graphics2_Graphics2_end();
-// TODO: Equiv Video Type
+void Kore_Graphics2_Graphics2_clear(
+	WC_Kore_Graphics2_Graphics2* self,
+	uint color);
+void Kore_Graphics2_Graphics2_flush(WC_Kore_Graphics2_Graphics2* self);
+void Kore_Graphics2_Graphics2_end(WC_Kore_Graphics2_Graphics2* self);
+// TODO: Equiv Video Type, impl in Kore unfinished?
 // void Kore_Graphics2_Graphics2_drawVideoInternal(
+//	WC_Kore_Graphics2_Graphics2* self,
 // 	/*Video video,*/ float x, float y, float width, float height);
 // void Kore_Graphics2_Graphics2_drawVideo(
+//	WC_Kore_Graphics2_Graphics2* self,
 // 	/*Video video,*/ float x, float y, float width, float height);
-uint Kore_Graphics2_Graphics2_getColor(); //const
-void Kore_Graphics2_Graphics2_setColor(uint color);
-float Kore_Graphics2_Graphics2_getOpacity(); //const
-void Kore_Graphics2_Graphics2_setOpacity(float opacity);
+uint Kore_Graphics2_Graphics2_getColor(
+	WC_Kore_Graphics2_Graphics2* self); //const
+void Kore_Graphics2_Graphics2_setColor(
+	WC_Kore_Graphics2_Graphics2* self, uint color);
+float Kore_Graphics2_Graphics2_getOpacity(
+	WC_Kore_Graphics2_Graphics2* self); //const
+void Kore_Graphics2_Graphics2_setOpacity(
+	WC_Kore_Graphics2_Graphics2* self, float opacity);
 // TODO: Equiv Kravur type
-// Kravur* Kore_Graphics2_Graphics2_getFont(); //const
-// void Kore_Graphics2_Graphics2_setFont(Kravur* font);
-int Kore_Graphics2_Graphics2_getFontSize(); //const
-void Kore_Graphics2_Graphics2_setFontSize(int value);
-uint Kore_Graphics2_Graphics2_getFontColor(); //const
-void Kore_Graphics2_Graphics2_setFontColor(uint color);
-// TODO: Graphics2 extended methods as found in Kha
+// Kravur* Kore_Graphics2_Graphics2_getFont(
+//	WC_Kore_Graphics2_Graphics2* self); //const
+// void Kore_Graphics2_Graphics2_setFont(
+//	WC_Kore_Graphics2_Graphics2* self, Kravur* font);
+int Kore_Graphics2_Graphics2_getFontSize(
+	WC_Kore_Graphics2_Graphics2* self); //const
+void Kore_Graphics2_Graphics2_setFontSize(
+	WC_Kore_Graphics2_Graphics2* self, int value);
+uint Kore_Graphics2_Graphics2_getFontColor(
+	WC_Kore_Graphics2_Graphics2* self); //const
+void Kore_Graphics2_Graphics2_setFontColor(
+	WC_Kore_Graphics2_Graphics2* self, uint color);
 // .. data accessors, TODO: Setter needed?
 // TODO: mat3 to wrapped equiv
-// WC_Kore_Mat3* Kore_Graphics2_Graphics2_getTransformation();
-// void Kore_Graphics2_Graphics2_setTransformation(WC_Kore_Mat3* transformation);
+// WC_Kore_Mat3* Kore_Graphics2_Graphics2_getTransformation(
+//	WC_Kore_Graphics2_Graphics2* self);
+// void Kore_Graphics2_Graphics2_setTransformation(
+//	WC_Kore_Graphics2_Graphics2* self, WC_Kore_Mat3* transformation);
 
 //   Kravur.h
 // Kore::Kravur stuff? see graphics2 Kravur.h
@@ -556,42 +620,6 @@ typedef enum WE_Kore_Graphics4_VertexAttribute {
 	WE_VertexAttributeVertexTexCoord6 = 11,
 	WE_VertexAttributeVertexTexCoord7 = 12,
 } WE_Kore_Graphics4_VertexAttribute;
-
-// Opaque Types to represent classes:
-
-/* Kore::Graphics4::VertexBuffer */
-struct WC_Kore_Graphics4_VertexBuffer;
-typedef struct WC_Kore_Graphics4_VertexBuffer WC_Kore_Graphics4_VertexBuffer;
-/* Kore::Graphics4::IndexBuffer */
-struct WC_Kore_Graphics4_IndexBuffer;
-typedef struct WC_Kore_Graphics4_IndexBuffer WC_Kore_Graphics4_IndexBuffer;
-/* Kore::Graphics4::RenderTarget */
-struct WC_Kore_Graphics4_RenderTarget;
-typedef struct WC_Kore_Graphics4_RenderTarget WC_Kore_Graphics4_RenderTarget;
-/* Kore::Graphics4::PipelineState */
-struct WC_Kore_Graphics4_PipelineState;
-typedef struct WC_Kore_Graphics4_PipelineState WC_Kore_Graphics4_PipelineState;
-/* Kore::Graphics4::Shader */
-struct WC_Kore_Graphics4_Shader;
-typedef struct WC_Kore_Graphics4_Shader WC_Kore_Graphics4_Shader;
-/* Kore::Graphics4::ConstantLocation */
-struct WC_Kore_Graphics4_ConstantLocation;
-typedef struct WC_Kore_Graphics4_ConstantLocation WC_Kore_Graphics4_ConstantLocation;
-/* Kore::Graphics4::TextureUnit */
-struct WC_Kore_Graphics4_TextureUnit;
-typedef struct WC_Kore_Graphics4_TextureUnit WC_Kore_Graphics4_TextureUnit;
-/* Kore::Graphics4::Texture */
-struct WC_Kore_Graphics4_Texture;
-typedef struct WC_Kore_Graphics4_Texture WC_Kore_Graphics4_Texture;
-/* Kore::Graphics4::TextureArray */
-struct WC_Kore_Graphics4_TextureArray;
-typedef struct WC_Kore_Graphics4_TextureArray WC_Kore_Graphics4_TextureArray;
-/* Kore::Graphics4::VertexElement */
-struct WC_Kore_Graphics4_VertexElement;
-typedef struct WC_Kore_Graphics4_VertexElement WC_Kore_Graphics4_VertexElement;
-/* Kore::Graphics4::VertexStructure */
-struct WC_Kore_Graphics4_VertexStructure;
-typedef struct WC_Kore_Graphics4_VertexStructure WC_Kore_Graphics4_VertexStructure;
 
 // Classes:
 
