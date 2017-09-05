@@ -299,13 +299,96 @@ typedef enum WE_Kore_Graphics2_ImageScaleQuality {
 
 // Opaque Types to represent classes:
 
+/* Kore::Graphics2::ImageShaderPainter */
+struct WC_Kore_Graphics2_ImageShaderPainter;
+typedef struct WC_Kore_Graphics2_ImageShaderPainter WC_Kore_Graphics2_ImageShaderPainter;
+/* Kore::Graphics2::ColoredShaderPainter */
+struct WC_Kore_Graphics2_ColoredShaderPainter;
+typedef struct WC_Kore_Graphics2_ColoredShaderPainter WC_Kore_Graphics2_ColoredShaderPainter;
+/* Kore::Graphics2::TextShaderPainter */
+struct WC_Kore_Graphics2_TextShaderPainter;
+typedef struct WC_Kore_Graphics2_TextShaderPainter WC_Kore_Graphics2_TextShaderPainter;
+/* Kore::Graphics2::Graphics2 */
+struct WC_Kore_Graphics2_Graphics2;
+typedef struct WC_Kore_Graphics2_Graphics2 WC_Kore_Graphics2_Graphics2;
+
 // Classes:
-//   Kore::Graphics2::Color? typedef'd from Kore::Graphics1::Color
-//   Kore::Graphics2::Graphics2
-//   Kore::Graphics2::ImageShaderPainter
-//   Kore::Graphics2::ColoredShaderPainter
-//   Kore::Graphics2::TextShaderPainter
-//   Kore::Kravur stuff? see graphics2 Kravur.h
+// .. constructors
+// .. destructor
+// .. methods
+// .. data accessors, TODO: Setter needed?
+
+//   Graphics.h
+// Kore::Graphics2::Color? typedef'd from Kore::Graphics1::Color
+// Kore::Graphics2::ImageShaderPainter
+// Kore::Graphics2::ColoredShaderPainter
+// Kore::Graphics2::TextShaderPainter
+
+// Kore::Graphics2::Graphics2
+// .. constructors
+WC_Kore_Graphics2_Graphics2* Kore_Graphics2_Graphics2_create(
+	int width, int height, bool rTargets);
+// .. destructor
+void Kore_Graphics2_Graphics2_destroy(WC_Kore_Graphics2_Graphics2* self);
+// .. methods
+void Kore_Graphics2_Graphics2_drawTexture( // drawImage
+	WC_Kore_Graphics4_Texture* img,
+	float x, float y);
+void Kore_Graphics2_Graphics2_drawScaledSubTexture( // drawScaledSubImage
+	WC_Kore_Graphics4_Texture* img,
+	float sx, float sy, float sw, float sh,
+	float dx, float dy, float dw, float dh);
+void Kore_Graphics2_Graphics2_drawRenderTarget( // drawImage
+	WC_Kore_Graphics4_RenderTarget* img,
+	float x, float y);
+void Kore_Graphics2_Graphics2_drawScaledSubRenderTarget( // drawScaledSubImage
+	WC_Kore_Graphics4_RenderTarget* img,
+	float sx, float sy, float sw, float sh,
+	float dx, float dy, float dw, float dh);
+void Kore_Graphics2_Graphics2_drawRect(
+	float x, float y, float width, float height, float strength);
+void Kore_Graphics2_Graphics2_fillRect(
+	float x, float y, float width, float height);
+void Kore_Graphics2_Graphics2_drawStringTXY(const char* text, float x, float y);
+void Kore_Graphics2_Graphics2_drawStringTLXY(
+	const char* text, int length, float x, float y);
+void Kore_Graphics2_Graphics2_drawLine(
+	float x1, float y1, float x2, float y2, float strength);
+void Kore_Graphics2_Graphics2_fillTriangle(
+	float x1, float y1, float x2, float y2, float x3, float y3);
+void Kore_Graphics2_Graphics2_setPipeline(
+	WC_Kore_Graphics4_PipelineState* pipeline);
+void Kore_Graphics2_Graphics2_scissor(int x, int y, int width, int height);
+void Kore_Graphics2_Graphics2_disableScissor();
+void Kore_Graphics2_Graphics2_begin(
+	bool renderTargets, int width, int height, bool clear, uint clearColor);
+void Kore_Graphics2_Graphics2_clear(uint color);
+void Kore_Graphics2_Graphics2_flush();
+void Kore_Graphics2_Graphics2_end();
+// TODO: Equiv Video Type
+// void Kore_Graphics2_Graphics2_drawVideoInternal(
+// 	/*Video video,*/ float x, float y, float width, float height);
+// void Kore_Graphics2_Graphics2_drawVideo(
+// 	/*Video video,*/ float x, float y, float width, float height);
+uint Kore_Graphics2_Graphics2_getColor(); //const
+void Kore_Graphics2_Graphics2_setColor(uint color);
+float Kore_Graphics2_Graphics2_getOpacity(); //const
+void Kore_Graphics2_Graphics2_setOpacity(float opacity);
+// TODO: Equiv Kravur type
+// Kravur* Kore_Graphics2_Graphics2_getFont(); //const
+// void Kore_Graphics2_Graphics2_setFont(Kravur* font);
+int Kore_Graphics2_Graphics2_getFontSize(); //const
+void Kore_Graphics2_Graphics2_setFontSize(int value);
+uint Kore_Graphics2_Graphics2_getFontColor(); //const
+void Kore_Graphics2_Graphics2_setFontColor(uint color);
+// TODO: Graphics2 extended methods as found in Kha
+// .. data accessors, TODO: Setter needed?
+// TODO: mat3 to wrapped equiv
+// WC_Kore_Mat3* Kore_Graphics2_Graphics2_getTransformation();
+// void Kore_Graphics2_Graphics2_setTransformation(WC_Kore_Mat3* transformation);
+
+//   Kravur.h
+// Kore::Kravur stuff? see graphics2 Kravur.h
 
 /*******************/
 
