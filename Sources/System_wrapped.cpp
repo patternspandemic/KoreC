@@ -22,6 +22,9 @@ static_assert(WE_OrientationPortrait == Kore::OrientationPortrait,
 static_assert(WE_OrientationUnknown == Kore::OrientationUnknown,
 	"Kore::OrientationUnknown enum value changed.");
 
+// TODO: Put these static declarations in a namespace?
+// Seen they're local to this cpp file.
+
 // We need to wrap the callback presented to 
 // Kore::System::setOrientationCallback to facilitate translation between
 // WE_Kore_Orientation enum and its original namespaced Kore::Orientation.
