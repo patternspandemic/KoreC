@@ -5,6 +5,7 @@
 #include <Kore/Graphics4/PipelineState.h>
 
 #include "../CWrapper.h"
+#include "../Helpers.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -33,21 +34,31 @@ void Kore_Graphics4_PipelineState_compile(
 // Must copy value object to heap in order to wrap in opaque C struct
 WC_Kore_Graphics4_ConstantLocation* Kore_Graphics4_PipelineState_getConstantLocation(
 	WC_Kore_Graphics4_PipelineState* self, const char* name) {
+	// return reinterpret_cast<WC_Kore_Graphics4_ConstantLocation*>(
+	// 	new Kore::Graphics4::ConstantLocation(
+	// 		reinterpret_cast<Kore::Graphics4::PipelineState*>(self)->getConstantLocation(name)
+	// 	)
+	// );
+	Kore::Graphics4::ConstantLocation cloc =
+		reinterpret_cast<Kore::Graphics4::PipelineState*>(self)->getConstantLocation(name);
 	return reinterpret_cast<WC_Kore_Graphics4_ConstantLocation*>(
-		new Kore::Graphics4::ConstantLocation(
-			reinterpret_cast<Kore::Graphics4::PipelineState*>(self)->getConstantLocation(name)
-		)
-	);
+		new KoreC::WConstantLocation4(cloc));
 }
+
+// I THINK THESE ARE BORKED ^ v
 
 // Must copy value object to heap in order to wrap in opaque C struct
 WC_Kore_Graphics4_TextureUnit* Kore_Graphics4_PipelineState_getTextureUnit(
 	WC_Kore_Graphics4_PipelineState* self, const char* name) {
+	// return reinterpret_cast<WC_Kore_Graphics4_TextureUnit*>(
+	// 	new Kore::Graphics4::TextureUnit(
+	// 		reinterpret_cast<Kore::Graphics4::PipelineState*>(self)->getTextureUnit(name)
+	// 	)
+	// );
+	Kore::Graphics4::TextureUnit tunit =
+  	reinterpret_cast<Kore::Graphics4::PipelineState*>(self)->getTextureUnit(name);
 	return reinterpret_cast<WC_Kore_Graphics4_TextureUnit*>(
-		new Kore::Graphics4::TextureUnit(
-			reinterpret_cast<Kore::Graphics4::PipelineState*>(self)->getTextureUnit(name)
-		)
-	);
+		new KoreC::WTextureUnit4(tunit));
 }
 
 void Kore_Graphics4_PipelineState_setInputLayoutAt(
