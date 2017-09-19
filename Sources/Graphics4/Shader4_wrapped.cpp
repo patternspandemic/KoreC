@@ -55,7 +55,7 @@ void Kore_Graphics4_Shader_destroy(
 }
 
 /* Kore::Graphics4::ConstantLocation */
-/*
+
 // .. constructors
 WC_Kore_Graphics4_ConstantLocation* Kore_Graphics4_ConstantLocation_create() {
   return reinterpret_cast<WC_Kore_Graphics4_ConstantLocation*>(
@@ -67,7 +67,6 @@ void Kore_Graphics4_ConstantLocation_destroy(
 	WC_Kore_Graphics4_ConstantLocation* self) {
   delete reinterpret_cast<Kore::Graphics4::ConstantLocation*>(self);
 }
-*/
 
 #ifdef __cplusplus
 }

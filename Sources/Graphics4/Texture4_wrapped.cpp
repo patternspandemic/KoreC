@@ -2,14 +2,14 @@
 #include <Kore/Graphics4/Texture.h>
 
 #include "../CWrapper.h"
-#include "../Helpers.h"
+// #include "../Helpers.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 /* Kore::Graphics4::TextureUnit */
-/*
+
 // .. constructors
 WC_Kore_Graphics4_TextureUnit* Kore_Graphics4_TextureUnit_create() {
   return reinterpret_cast<WC_Kore_Graphics4_TextureUnit*>(
@@ -21,7 +21,6 @@ void Kore_Graphics4_TextureUnit_destroy(
 	WC_Kore_Graphics4_TextureUnit* self) {
   delete reinterpret_cast<Kore::Graphics4::TextureUnit*>(self);
 }
-*/
 
 /* Kore::Graphics4::Texture */
 
@@ -87,15 +86,15 @@ void Kore_Graphics4_Texture_destroy(
 void Kore_Graphics4_Texture__set(
 	WC_Kore_Graphics4_Texture* self, WC_Kore_Graphics4_TextureUnit* unit) {
   reinterpret_cast<Kore::Graphics4::Texture*>(self)->_set(
-    // *reinterpret_cast<Kore::Graphics4::TextureUnit*>(unit));
-		reinterpret_cast<KoreC::WTextureUnit4*>(unit)->unit);
+    *reinterpret_cast<Kore::Graphics4::TextureUnit*>(unit));
+		// reinterpret_cast<KoreC::WTextureUnit4*>(unit)->unit);
 }
 
 void Kore_Graphics4_Texture__setImage(
 	WC_Kore_Graphics4_Texture* self, WC_Kore_Graphics4_TextureUnit* unit) {
   reinterpret_cast<Kore::Graphics4::Texture*>(self)->_setImage(
-    // *reinterpret_cast<Kore::Graphics4::TextureUnit*>(unit));
-		reinterpret_cast<KoreC::WTextureUnit4*>(unit)->unit);
+    *reinterpret_cast<Kore::Graphics4::TextureUnit*>(unit));
+		// reinterpret_cast<KoreC::WTextureUnit4*>(unit)->unit);
 }
 
 u8* Kore_Graphics4_Texture_lock(WC_Kore_Graphics4_Texture* self) {

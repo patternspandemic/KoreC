@@ -834,23 +834,19 @@ void Kore_Graphics4_Shader_destroy(
 	WC_Kore_Graphics4_Shader* self);
 
 /* Kore::Graphics4::ConstantLocation */
-/* Not necessary to expose
 // .. constructors
 WC_Kore_Graphics4_ConstantLocation* Kore_Graphics4_ConstantLocation_create();
 // .. destructor
 void Kore_Graphics4_ConstantLocation_destroy(
 	WC_Kore_Graphics4_ConstantLocation* self);
-*/
 
 //   Texture.h
 /* Kore::Graphics4::TextureUnit */
-/* Not necessary to expose
 // .. constructors
 WC_Kore_Graphics4_TextureUnit* Kore_Graphics4_TextureUnit_create();
 // .. destructor
 void Kore_Graphics4_TextureUnit_destroy(
 	WC_Kore_Graphics4_TextureUnit* self);
-*/
 
 /* Kore::Graphics4::Texture */
 // .. constructors

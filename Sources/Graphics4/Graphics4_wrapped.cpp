@@ -9,7 +9,7 @@
 #include <assert.h>
 
 #include "../CWrapper.h"
-#include "../Helpers.h"
+// #include "../Helpers.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -344,16 +344,16 @@ void Kore_Graphics4_RenderTarget_useColorAsTexture(
 	WC_Kore_Graphics4_RenderTarget* self,
 	WC_Kore_Graphics4_TextureUnit* unit) {
 	reinterpret_cast<Kore::Graphics4::RenderTarget*>(self)->useColorAsTexture(
-		// *reinterpret_cast<Kore::Graphics4::TextureUnit*>(unit));
-		reinterpret_cast<KoreC::WTextureUnit4*>(unit)->unit);
+		*reinterpret_cast<Kore::Graphics4::TextureUnit*>(unit));
+		// reinterpret_cast<KoreC::WTextureUnit4*>(unit)->unit);
 }
 
 void Kore_Graphics4_RenderTarget_useDepthAsTexture(
 	WC_Kore_Graphics4_RenderTarget* self,
 	WC_Kore_Graphics4_TextureUnit* unit) {
 	reinterpret_cast<Kore::Graphics4::RenderTarget*>(self)->useDepthAsTexture(
-		// *reinterpret_cast<Kore::Graphics4::TextureUnit*>(unit));
-		reinterpret_cast<KoreC::WTextureUnit4*>(unit)->unit);
+		*reinterpret_cast<Kore::Graphics4::TextureUnit*>(unit));
+		// reinterpret_cast<KoreC::WTextureUnit4*>(unit)->unit);
 }
 
 void Kore_Graphics4_RenderTarget_setDepthStencilFrom(
@@ -407,32 +407,29 @@ bool Kore_Graphics4_RenderTarget_getIsDepthAttachment(
 void Kore_Graphics4_setBool(
 	WC_Kore_Graphics4_ConstantLocation* location, bool value) {
 	Kore::Graphics4::setBool(
-		// *reinterpret_cast<Kore::Graphics4::ConstantLocation*>(location), value);
-		reinterpret_cast<KoreC::WConstantLocation4*>(location)->location,
-		value);
+		*reinterpret_cast<Kore::Graphics4::ConstantLocation*>(location), value);
+		// reinterpret_cast<KoreC::WConstantLocation4*>(location)->location, value);
 }
 
 void Kore_Graphics4_setInt(
 	WC_Kore_Graphics4_ConstantLocation* location, int value) {
 	Kore::Graphics4::setInt(
-		// *reinterpret_cast<Kore::Graphics4::ConstantLocation*>(location), value);
-		reinterpret_cast<KoreC::WConstantLocation4*>(location)->location,
-		value);
+		*reinterpret_cast<Kore::Graphics4::ConstantLocation*>(location), value);
+		// reinterpret_cast<KoreC::WConstantLocation4*>(location)->location, value);
 }
 
 void Kore_Graphics4_setFloat(
 	WC_Kore_Graphics4_ConstantLocation* location, float value) {
 	Kore::Graphics4::setFloat(
-		// *reinterpret_cast<Kore::Graphics4::ConstantLocation*>(location), value);
-		reinterpret_cast<KoreC::WConstantLocation4*>(location)->location,
-		value);
+		*reinterpret_cast<Kore::Graphics4::ConstantLocation*>(location), value);
+		// reinterpret_cast<KoreC::WConstantLocation4*>(location)->location, value);
 }
 
 void Kore_Graphics4_setFloat2(
 	WC_Kore_Graphics4_ConstantLocation* location, float value1, float value2) {
 	Kore::Graphics4::setFloat2(
-		// *reinterpret_cast<Kore::Graphics4::ConstantLocation*>(location),
-		reinterpret_cast<KoreC::WConstantLocation4*>(location)->location,
+		*reinterpret_cast<Kore::Graphics4::ConstantLocation*>(location),
+		// reinterpret_cast<KoreC::WConstantLocation4*>(location)->location,
 		value1, value2);
 }
 
@@ -440,16 +437,16 @@ void Kore_Graphics4_setFloat2(
 // void Kore_Graphics4_setFloat2Vec(
 // 	WC_Kore_Graphics4_ConstantLocation* location, vec2 value) {
 // 	Kore::Graphics4::setFloat2(
-// 		//*reinterpret_cast<Kore::Graphics4::ConstantLocation*>(location), value);
-// 		reinterpret_cast<KoreC::WConstantLocation4*>(location)->location, value);
+// 		*reinterpret_cast<Kore::Graphics4::ConstantLocation*>(location), value);
+// 		//reinterpret_cast<KoreC::WConstantLocation4*>(location)->location, value);
 // }
 
 void Kore_Graphics4_setFloat3(
 	WC_Kore_Graphics4_ConstantLocation* location,
 	float value1, float value2, float value3) {
 	Kore::Graphics4::setFloat3(
-		// *reinterpret_cast<Kore::Graphics4::ConstantLocation*>(location),
-		reinterpret_cast<KoreC::WConstantLocation4*>(location)->location,
+		*reinterpret_cast<Kore::Graphics4::ConstantLocation*>(location),
+		// reinterpret_cast<KoreC::WConstantLocation4*>(location)->location,
 		value1, value2, value3);
 }
 
@@ -457,16 +454,16 @@ void Kore_Graphics4_setFloat3(
 // void Kore_Graphics4_setFloat3Vec(
 // 	WC_Kore_Graphics4_ConstantLocation* location, vec3 value) {
 // 	Kore::Graphics4::setFloat3(
-// 		//*reinterpret_cast<Kore::Graphics4::ConstantLocation*>(location), value);
-// 		reinterpret_cast<KoreC::WConstantLocation4*>(location)->location, value);
+// 		*reinterpret_cast<Kore::Graphics4::ConstantLocation*>(location), value);
+//		//reinterpret_cast<KoreC::WConstantLocation4*>(location)->location, value);
 // }
 
 void Kore_Graphics4_setFloat4(
 	WC_Kore_Graphics4_ConstantLocation* location,
 	float value1, float value2, float value3, float value4) {
 	Kore::Graphics4::setFloat4(
-		// *reinterpret_cast<Kore::Graphics4::ConstantLocation*>(location),
-		reinterpret_cast<KoreC::WConstantLocation4*>(location)->location,
+		*reinterpret_cast<Kore::Graphics4::ConstantLocation*>(location),
+		// reinterpret_cast<KoreC::WConstantLocation4*>(location)->location,
 		value1, value2, value3, value4);
 }
 
@@ -474,15 +471,15 @@ void Kore_Graphics4_setFloat4(
 // void Kore_Graphics4_setFloat4Vec(
 // 	WC_Kore_Graphics4_ConstantLocation* location, vec4 value) {
 // 	Kore::Graphics4::setFloat4(
-// 		//*reinterpret_cast<Kore::Graphics4::ConstantLocation*>(location), value);
-// 		reinterpret_cast<KoreC::WConstantLocation4*>(location)->location, value);
+// 		*reinterpret_cast<Kore::Graphics4::ConstantLocation*>(location), value);
+// 		//reinterpret_cast<KoreC::WConstantLocation4*>(location)->location, value);
 // }
 
 void Kore_Graphics4_setFloats(
 	WC_Kore_Graphics4_ConstantLocation* location, float* floats, int count) {
 	Kore::Graphics4::setFloats(
-		// *reinterpret_cast<Kore::Graphics4::ConstantLocation*>(location),
-		reinterpret_cast<KoreC::WConstantLocation4*>(location)->location,
+		*reinterpret_cast<Kore::Graphics4::ConstantLocation*>(location),
+		// reinterpret_cast<KoreC::WConstantLocation4*>(location)->location,
 		floats, count);
 }
 
@@ -490,17 +487,16 @@ void Kore_Graphics4_setFloats(
 // void Kore_Graphics4_setMatrix3(
 // 	WC_Kore_Graphics4_ConstantLocation* location, mat3* value) {
 // 	Kore::Graphics4::setMatrix(
-// 		//*reinterpret_cast<Kore::Graphics4::ConstantLocation*>(location), *value);
-// 		reinterpret_cast<KoreC::WConstantLocation4*>(location)->location,
-//  *value);
+// 		*reinterpret_cast<Kore::Graphics4::ConstantLocation*>(location), *value);
+// 		//reinterpret_cast<KoreC::WConstantLocation4*>(location)->location, *value);
 // }
 
 // TODO:
 // void Kore_Graphics4_setMatrix4(
 // 	WC_Kore_Graphics4_ConstantLocation* location, mat4* value) {
 // 	Kore::Graphics4::setMatrix(
-// 		//*reinterpret_cast<Kore::Graphics4::ConstantLocation*>(location), *value);
-// 		reinterpret_cast<KoreC::WConstantLocation4*>(location)->location, *value);
+// 		*reinterpret_cast<Kore::Graphics4::ConstantLocation*>(location), *value);
+// 		//reinterpret_cast<KoreC::WConstantLocation4*>(location)->location, *value);
 // }
 
 
@@ -525,24 +521,24 @@ void Kore_Graphics4_setIndexBuffer(
 void Kore_Graphics4_setTexture(
 	WC_Kore_Graphics4_TextureUnit* unit, WC_Kore_Graphics4_Texture* texture) {
 	Kore::Graphics4::setTexture(
-		// *reinterpret_cast<Kore::Graphics4::TextureUnit*>(unit),
-		reinterpret_cast<KoreC::WTextureUnit4*>(unit)->unit,
+		*reinterpret_cast<Kore::Graphics4::TextureUnit*>(unit),
+		// reinterpret_cast<KoreC::WTextureUnit4*>(unit)->unit,
 		reinterpret_cast<Kore::Graphics4::Texture*>(texture));
 }
 
 void Kore_Graphics4_setTextureArray(
 	WC_Kore_Graphics4_TextureUnit* unit, WC_Kore_Graphics4_TextureArray* array) {
 	Kore::Graphics4::setTextureArray(
-		// *reinterpret_cast<Kore::Graphics4::TextureUnit*>(unit),
-		reinterpret_cast<KoreC::WTextureUnit4*>(unit)->unit,
+		*reinterpret_cast<Kore::Graphics4::TextureUnit*>(unit),
+		// reinterpret_cast<KoreC::WTextureUnit4*>(unit)->unit,
 		reinterpret_cast<Kore::Graphics4::TextureArray*>(array));
 }
 
 void Kore_Graphics4_setImageTexture(
 	WC_Kore_Graphics4_TextureUnit* unit, WC_Kore_Graphics4_Texture* texture) {
 	Kore::Graphics4::setImageTexture(
-		// *reinterpret_cast<Kore::Graphics4::TextureUnit*>(unit),
-		reinterpret_cast<KoreC::WTextureUnit4*>(unit)->unit,
+		*reinterpret_cast<Kore::Graphics4::TextureUnit*>(unit),
+		// reinterpret_cast<KoreC::WTextureUnit4*>(unit)->unit,
 		reinterpret_cast<Kore::Graphics4::Texture*>(texture));
 }
 
@@ -663,8 +659,8 @@ void Kore_Graphics4_setTextureAddressing(
 	WE_Kore_Graphics4_TexDir dir,
 	WE_Kore_Graphics4_TextureAddressing addressing) {
 	Kore::Graphics4::setTextureAddressing(
-		// *reinterpret_cast<Kore::Graphics4::TextureUnit*>(unit),
-		reinterpret_cast<KoreC::WTextureUnit4*>(unit)->unit,
+		*reinterpret_cast<Kore::Graphics4::TextureUnit*>(unit),
+		// reinterpret_cast<KoreC::WTextureUnit4*>(unit)->unit,
 		(Kore::Graphics4::TexDir)dir,
 		(Kore::Graphics4::TextureAddressing)addressing);
 }
@@ -673,8 +669,8 @@ void Kore_Graphics4_setTextureMagnificationFilter(
 	WC_Kore_Graphics4_TextureUnit* texunit,
 	WE_Kore_Graphics4_TextureFilter filter) {
 	Kore::Graphics4::setTextureMagnificationFilter(
-		// *reinterpret_cast<Kore::Graphics4::TextureUnit*>(texunit),
-		reinterpret_cast<KoreC::WTextureUnit4*>(texunit)->unit,
+		*reinterpret_cast<Kore::Graphics4::TextureUnit*>(texunit),
+		// reinterpret_cast<KoreC::WTextureUnit4*>(texunit)->unit,
 		(Kore::Graphics4::TextureFilter)filter);
 }
 
@@ -682,8 +678,8 @@ void Kore_Graphics4_setTextureMinificationFilter(
 	WC_Kore_Graphics4_TextureUnit* texunit,
 	WE_Kore_Graphics4_TextureFilter filter) {
 	Kore::Graphics4::setTextureMinificationFilter(
-		// *reinterpret_cast<Kore::Graphics4::TextureUnit*>(texunit),
-		reinterpret_cast<KoreC::WTextureUnit4*>(texunit)->unit,
+		*reinterpret_cast<Kore::Graphics4::TextureUnit*>(texunit),
+		// reinterpret_cast<KoreC::WTextureUnit4*>(texunit)->unit,
 		(Kore::Graphics4::TextureFilter)filter);
 }
 
@@ -691,8 +687,8 @@ void Kore_Graphics4_setTextureMipmapFilter(
 	WC_Kore_Graphics4_TextureUnit* texunit,
 	WE_Kore_Graphics4_MipmapFilter filter) {
 	Kore::Graphics4::setTextureMipmapFilter(
-		// *reinterpret_cast<Kore::Graphics4::TextureUnit*>(texunit),
-		reinterpret_cast<KoreC::WTextureUnit4*>(texunit)->unit,
+		*reinterpret_cast<Kore::Graphics4::TextureUnit*>(texunit),
+		// reinterpret_cast<KoreC::WTextureUnit4*>(texunit)->unit,
 		(Kore::Graphics4::MipmapFilter)filter);
 }
 
@@ -701,8 +697,8 @@ void Kore_Graphics4_setTexture3DAddressing(
 	WE_Kore_Graphics4_TexDir dir,
 	WE_Kore_Graphics4_TextureAddressing addressing) {
 	Kore::Graphics4::setTexture3DAddressing(
-		// *reinterpret_cast<Kore::Graphics4::TextureUnit*>(unit),
-		reinterpret_cast<KoreC::WTextureUnit4*>(unit)->unit,
+		*reinterpret_cast<Kore::Graphics4::TextureUnit*>(unit),
+		// reinterpret_cast<KoreC::WTextureUnit4*>(unit)->unit,
 		(Kore::Graphics4::TexDir)dir,
 		(Kore::Graphics4::TextureAddressing)addressing);
 }
@@ -711,8 +707,8 @@ void Kore_Graphics4_setTexture3DMagnificationFilter(
 	WC_Kore_Graphics4_TextureUnit* texunit,
 	WE_Kore_Graphics4_TextureFilter filter) {
 	Kore::Graphics4::setTexture3DMagnificationFilter(
-		// *reinterpret_cast<Kore::Graphics4::TextureUnit*>(texunit),
-		reinterpret_cast<KoreC::WTextureUnit4*>(texunit)->unit,
+		*reinterpret_cast<Kore::Graphics4::TextureUnit*>(texunit),
+		// reinterpret_cast<KoreC::WTextureUnit4*>(texunit)->unit,
 		(Kore::Graphics4::TextureFilter)filter);
 }
 
@@ -720,8 +716,8 @@ void Kore_Graphics4_setTexture3DMinificationFilter(
 	WC_Kore_Graphics4_TextureUnit* texunit,
 	WE_Kore_Graphics4_TextureFilter filter) {
 	Kore::Graphics4::setTexture3DMinificationFilter(
-		// *reinterpret_cast<Kore::Graphics4::TextureUnit*>(texunit),
-		reinterpret_cast<KoreC::WTextureUnit4*>(texunit)->unit,
+		*reinterpret_cast<Kore::Graphics4::TextureUnit*>(texunit),
+		// reinterpret_cast<KoreC::WTextureUnit4*>(texunit)->unit,
 		(Kore::Graphics4::TextureFilter)filter);
 }
 
@@ -729,8 +725,8 @@ void Kore_Graphics4_setTexture3DMipmapFilter(
 	WC_Kore_Graphics4_TextureUnit* texunit,
 	WE_Kore_Graphics4_MipmapFilter filter) {
 	Kore::Graphics4::setTexture3DMipmapFilter(
-		// *reinterpret_cast<Kore::Graphics4::TextureUnit*>(texunit),
-		reinterpret_cast<KoreC::WTextureUnit4*>(texunit)->unit,
+		*reinterpret_cast<Kore::Graphics4::TextureUnit*>(texunit),
+		// reinterpret_cast<KoreC::WTextureUnit4*>(texunit)->unit,
 		(Kore::Graphics4::MipmapFilter)filter);
 }
 

@@ -2,7 +2,7 @@
 #include <Kore/Graphics4/Shader.h>
 #include <Kore/Graphics4/Texture.h>
 
-
+/*
 namespace KoreC {
 
 	class WTextureUnit4 {
@@ -18,3 +18,4 @@ namespace KoreC {
 	};
 
 }
+*/
