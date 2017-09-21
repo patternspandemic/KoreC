@@ -431,6 +431,16 @@ float Kore_Graphics2_Graphics2_getOpacity(
 	WC_Kore_Graphics2_Graphics2* self); //const
 void Kore_Graphics2_Graphics2_setOpacity(
 	WC_Kore_Graphics2_Graphics2* self, float opacity);
+WE_Kore_Graphics2_ImageScaleQuality Kore_Graphics2_Graphics2_getImageScaleQuality(
+	WC_Kore_Graphics2_Graphics2* self); //const
+void Kore_Graphics2_Graphics2_setImageScaleQuality(
+	WC_Kore_Graphics2_Graphics2* self,
+	WE_Kore_Graphics2_ImageScaleQuality value);
+WE_Kore_Graphics2_ImageScaleQuality Kore_Graphics2_Graphics2_getMipmapScaleQuality(
+	WC_Kore_Graphics2_Graphics2* self); //const
+void Kore_Graphics2_Graphics2_setMipmapScaleQuality(
+	WC_Kore_Graphics2_Graphics2* self,
+	WE_Kore_Graphics2_ImageScaleQuality value);
 // TODO: Equiv Kravur type
 // Kravur* Kore_Graphics2_Graphics2_getFont(
 //	WC_Kore_Graphics2_Graphics2* self); //const
