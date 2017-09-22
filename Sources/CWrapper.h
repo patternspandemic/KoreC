@@ -509,8 +509,10 @@ typedef struct WS_AlignedQuad {
 void Kore_Kravur_destroy(WC_Kore_Kravur* self);
 // .. methods
 WC_Kore_Graphics4_Texture* Kore_Kravur_getTexture(WC_Kore_Kravur* self);
-WS_AlignedQuad Kore_Kravur_getBakedQuad(
-	WC_Kore_Kravur* self, int char_index, float xpos, float ypos);
+void Kore_Kravur_getBakedQuad(
+	WC_Kore_Kravur* self,
+	int char_index, float xpos, float ypos,
+	WS_AlignedQuad* alignedQuadOut);
 float Kore_Kravur_getSize(WC_Kore_Kravur* self); // Kore::Kravur::getHeight
 float Kore_Kravur_charsWidth(
 	WC_Kore_Kravur* self, const char* ch, int offset, int length);

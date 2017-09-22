@@ -286,23 +286,22 @@ WC_Kore_Graphics4_Texture* Kore_Kravur_getTexture(WC_Kore_Kravur* self) {
     reinterpret_cast<Kore::Kravur*>(self)->getTexture());
 }
 
-// TODO: Special struct handling for Kore::Kravur::getBakedQuad return of WS_AlignedQuad? This return may not work, may need out param.
-WS_AlignedQuad Kore_Kravur_getBakedQuad(
-	WC_Kore_Kravur* self, int char_index, float xpos, float ypos) {
-  WS_AlignedQuad ws_alignedQuad;
+void Kore_Kravur_getBakedQuad(
+	WC_Kore_Kravur* self,
+  int char_index, float xpos, float ypos,
+  WS_AlignedQuad* alignedQuadOut) {
   AlignedQuad bakedQuad;
   bakedQuad = reinterpret_cast<Kore::Kravur*>(self)->getBakedQuad(
     char_index, xpos, ypos);
-  ws_alignedQuad.x0 = bakedQuad.x0;
-	ws_alignedQuad.y0 = bakedQuad.y0;
-	ws_alignedQuad.s0 = bakedQuad.s0;
-	ws_alignedQuad.t0 = bakedQuad.t0;
-	ws_alignedQuad.x1 = bakedQuad.x1;
-	ws_alignedQuad.y1 = bakedQuad.y1;
-	ws_alignedQuad.s1 = bakedQuad.s1;
-	ws_alignedQuad.t1 = bakedQuad.t1;
-  ws_alignedQuad.xadvance = bakedQuad.xadvance;
-  return ws_alignedQuad;
+  alignedQuadOut->x0 = bakedQuad.x0;
+	alignedQuadOut->y0 = bakedQuad.y0;
+	alignedQuadOut->s0 = bakedQuad.s0;
+	alignedQuadOut->t0 = bakedQuad.t0;
+	alignedQuadOut->x1 = bakedQuad.x1;
+	alignedQuadOut->y1 = bakedQuad.y1;
+	alignedQuadOut->s1 = bakedQuad.s1;
+	alignedQuadOut->t1 = bakedQuad.t1;
+  alignedQuadOut->xadvance = bakedQuad.xadvance;
 }
 
 float Kore_Kravur_getSize(WC_Kore_Kravur* self) {
