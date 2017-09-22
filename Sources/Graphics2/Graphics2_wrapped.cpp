@@ -273,7 +273,76 @@ void Kore_Graphics2_Graphics2_setFontColor(
 
 
 
-//   Kore::Kravur stuff? see graphics2 Kravur.h
+/* Kore::Kravur */
+
+// .. destructor
+void Kore_Kravur_destroy(WC_Kore_Kravur* self) {
+  delete reinterpret_cast<Kore::Kravur*>(self);
+}
+
+// .. methods
+WC_Kore_Graphics4_Texture* Kore_Kravur_getTexture(WC_Kore_Kravur* self) {
+  return reinterpret_cast<WC_Kore_Graphics4_Texture*>(
+    reinterpret_cast<Kore::Kravur*>(self)->getTexture());
+}
+
+// TODO: Special struct handling for Kore::Kravur::getBakedQuad return of WS_AlignedQuad? This return may not work, may need out param.
+WS_AlignedQuad Kore_Kravur_getBakedQuad(
+	WC_Kore_Kravur* self, int char_index, float xpos, float ypos) {
+  WS_AlignedQuad ws_alignedQuad;
+  AlignedQuad bakedQuad;
+  bakedQuad = reinterpret_cast<Kore::Kravur*>(self)->getBakedQuad(
+    char_index, xpos, ypos);
+  ws_alignedQuad.x0 = bakedQuad.x0;
+	ws_alignedQuad.y0 = bakedQuad.y0;
+	ws_alignedQuad.s0 = bakedQuad.s0;
+	ws_alignedQuad.t0 = bakedQuad.t0;
+	ws_alignedQuad.x1 = bakedQuad.x1;
+	ws_alignedQuad.y1 = bakedQuad.y1;
+	ws_alignedQuad.s1 = bakedQuad.s1;
+	ws_alignedQuad.t1 = bakedQuad.t1;
+  ws_alignedQuad.xadvance = bakedQuad.xadvance;
+  return ws_alignedQuad;
+}
+
+float Kore_Kravur_getSize(WC_Kore_Kravur* self) {
+  return reinterpret_cast<Kore::Kravur*>(self)->getHeight();
+}
+
+float Kore_Kravur_charsWidth(
+	WC_Kore_Kravur* self, const char* ch, int offset, int length) {
+  return reinterpret_cast<Kore::Kravur*>(self)->charsWidth(ch, offset, length);
+}
+
+float Kore_Kravur_stringWidth(
+	WC_Kore_Kravur* self, const char* string, int length) {
+  return reinterpret_cast<Kore::Kravur*>(self)->stringWidth(string, length);
+} //int length = -1
+
+float Kore_Kravur_getBaselinePosition(WC_Kore_Kravur* self) {
+  return reinterpret_cast<Kore::Kravur*>(self)->getBaselinePosition();
+}
+
+// .. data accessors
+int Kore_Kravur_getWidth(WC_Kore_Kravur* self) {
+  return reinterpret_cast<Kore::Kravur*>(self)->width;
+}
+
+int Kore_Kravur_getHeight(WC_Kore_Kravur* self) {
+  return reinterpret_cast<Kore::Kravur*>(self)->height;
+}
+
+// .. static members
+WC_Kore_Kravur* Kore_Kravur_load(
+	const char* name, WS_FontStyle* style, float size) {
+  FontStyle fontStyle;
+  fontStyle.bold = style->bold;
+  fontStyle.italic = style->italic;
+  fontStyle.underlined = style->underlined;
+  return reinterpret_cast<WC_Kore_Kravur*>(
+		Kore::Kravur::load(name, fontStyle, size));
+}
+
 
 #ifdef __cplusplus
 }

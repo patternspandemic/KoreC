@@ -34,6 +34,10 @@ extern "C" {
 
 // Opaque Types to represent classes:
 
+/* Kore::Kravur */
+struct WC_Kore_Kravur;
+typedef struct WC_Kore_Kravur WC_Kore_Kravur;
+
 /* Kore::Graphics1::Color */
 struct WC_Kore_Graphics1_Color;
 typedef struct WC_Kore_Graphics1_Color WC_Kore_Graphics1_Color;
@@ -462,7 +466,63 @@ void Kore_Graphics2_Graphics2_setFontColor(
 //	WC_Kore_Graphics2_Graphics2* self, WC_Kore_Mat3* transformation);
 
 //   Kravur.h
-// Kore::Kravur stuff? see graphics2 Kravur.h
+
+// FontStyle
+struct WS_FontStyle;
+typedef struct WS_FontStyle {
+	bool bold;
+	bool italic;
+	bool underlined;
+} WS_FontStyle;
+
+// BakedChar
+struct WS_BakedChar;
+typedef struct WS_BakedChar {
+	// coordinates of bbox in bitmap
+	int x0;
+	int y0;
+	int x1;
+	int y1;
+	float xoff;
+	float yoff;
+	float xadvance;
+} WS_BakedChar;
+
+// AlignedQuad
+struct WS_AlignedQuad;
+typedef struct WS_AlignedQuad {
+	// top-left
+	float x0;
+	float y0;
+	float s0;
+	float t0;
+	// bottom-right
+	float x1;
+	float y1;
+	float s1;
+	float t1;
+	float xadvance;
+} WS_AlignedQuad;
+
+// Kore::Kravur
+// .. destructor
+void Kore_Kravur_destroy(WC_Kore_Kravur* self);
+// .. methods
+WC_Kore_Graphics4_Texture* Kore_Kravur_getTexture(WC_Kore_Kravur* self);
+WS_AlignedQuad Kore_Kravur_getBakedQuad(
+	WC_Kore_Kravur* self, int char_index, float xpos, float ypos);
+float Kore_Kravur_getSize(WC_Kore_Kravur* self); // Kore::Kravur::getHeight
+float Kore_Kravur_charsWidth(
+	WC_Kore_Kravur* self, const char* ch, int offset, int length);
+float Kore_Kravur_stringWidth(
+	WC_Kore_Kravur* self, const char* string, int length); //int length = -1
+float Kore_Kravur_getBaselinePosition(WC_Kore_Kravur* self);
+// .. data accessors
+int Kore_Kravur_getWidth(WC_Kore_Kravur* self);
+int Kore_Kravur_getHeight(WC_Kore_Kravur* self);
+// .. static members
+WC_Kore_Kravur* Kore_Kravur_load(
+	const char* name, WS_FontStyle* style, float size);
 
 /*******************/
 
