@@ -226,18 +226,17 @@ void Kore_Graphics2_Graphics2_setMipmapScaleQuality(
     (Kore::Graphics2::ImageScaleQuality)value);
 }
 
-// TODO: Equiv Kravur type
-// Kravur* Kore_Graphics2_Graphics2_getFont(
-// 	WC_Kore_Graphics2_Graphics2* self) {
-//   return reinterpret_cast<WC_Kore_Kravur*>(
-//     reinterpret_cast<Kore::Graphics2::Graphics2*>(self)->getFont());
-// } //const
+WC_Kore_Kravur* Kore_Graphics2_Graphics2_getFont(
+	WC_Kore_Graphics2_Graphics2* self) {
+  return reinterpret_cast<WC_Kore_Kravur*>(
+    reinterpret_cast<Kore::Graphics2::Graphics2*>(self)->getFont());
+} //const
 
-// void Kore_Graphics2_Graphics2_setFont(
-// 	WC_Kore_Graphics2_Graphics2* self, WC_Kore_Kravur* font) {
-//   reinterpret_cast<Kore::Graphics2::Graphics2*>(self)->setFont(
-//     reinterpret_cast<Kore::Kravur*>(font));
-// }
+void Kore_Graphics2_Graphics2_setFont(
+	WC_Kore_Graphics2_Graphics2* self, WC_Kore_Kravur* font) {
+  reinterpret_cast<Kore::Graphics2::Graphics2*>(self)->setFont(
+    reinterpret_cast<Kore::Kravur*>(font));
+}
 
 int Kore_Graphics2_Graphics2_getFontSize(
 	WC_Kore_Graphics2_Graphics2* self) {

@@ -445,11 +445,10 @@ WE_Kore_Graphics2_ImageScaleQuality Kore_Graphics2_Graphics2_getMipmapScaleQuali
 void Kore_Graphics2_Graphics2_setMipmapScaleQuality(
 	WC_Kore_Graphics2_Graphics2* self,
 	WE_Kore_Graphics2_ImageScaleQuality value);
-// TODO: Equiv Kravur type
-// Kravur* Kore_Graphics2_Graphics2_getFont(
-//	WC_Kore_Graphics2_Graphics2* self); //const
-// void Kore_Graphics2_Graphics2_setFont(
-//	WC_Kore_Graphics2_Graphics2* self, Kravur* font);
+WC_Kore_Kravur* Kore_Graphics2_Graphics2_getFont(
+	WC_Kore_Graphics2_Graphics2* self); //const
+void Kore_Graphics2_Graphics2_setFont(
+	WC_Kore_Graphics2_Graphics2* self, WC_Kore_Kravur* font);
 int Kore_Graphics2_Graphics2_getFontSize(
 	WC_Kore_Graphics2_Graphics2* self); //const
 void Kore_Graphics2_Graphics2_setFontSize(
