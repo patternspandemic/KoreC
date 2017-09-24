@@ -112,6 +112,13 @@ void Kore_Graphics2_Graphics2_drawStringTLXY(
     text, length, x, y);
 }
 
+void Kore_Graphics2_Graphics2_drawStringTSLXY(
+	WC_Kore_Graphics2_Graphics2* self,
+	const char* text, int start, int length, float x, float y) {
+  reinterpret_cast<Kore::Graphics2::Graphics2*>(self)->drawString(
+    text, start, length, x, y);
+}
+
 void Kore_Graphics2_Graphics2_drawLine(
 	WC_Kore_Graphics2_Graphics2* self,
 	float x1, float y1, float x2, float y2, float strength) {

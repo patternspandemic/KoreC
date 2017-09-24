@@ -399,6 +399,9 @@ void Kore_Graphics2_Graphics2_drawStringTXY(
 void Kore_Graphics2_Graphics2_drawStringTLXY(
 	WC_Kore_Graphics2_Graphics2* self,
 	const char* text, int length, float x, float y);
+void Kore_Graphics2_Graphics2_drawStringTSLXY(
+	WC_Kore_Graphics2_Graphics2* self,
+	const char* text, int length, float x, float y);
 void Kore_Graphics2_Graphics2_drawLine(
 	WC_Kore_Graphics2_Graphics2* self,
 	float x1, float y1, float x2, float y2, float strength);
