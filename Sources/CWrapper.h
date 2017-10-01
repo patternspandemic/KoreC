@@ -246,15 +246,28 @@ void Kore_System_dropFilesCallback(wchar_t* filePath);
 
 
 
-/**** Random ****/
+/**** Math ****/
 
+// mat3 elements helper
+struct KC_Mat3ValuesHelper;
+typedef struct KC_Mat3ValuesHelper {
+	// TODO: matrix element fields
+} KC_Mat3ValuesHelper;
+
+// mat4 elements helper
+struct KC_Mat4ValuesHelper;
+typedef struct KC_Mat4ValuesHelper {
+	// TODO: matrix element fields
+} KC_Mat4ValuesHelper;
+
+// Kore::Random
 void Kore_Random_init();
 void Kore_Random_initSeed(int seed);
 s32 Kore_Random_get();
 s32 Kore_Random_getMax(s32 max);
 s32 Kore_Random_getMinMax(s32 min, s32 max);
 
-/****************/
+/**************/
 
 
 
@@ -464,8 +477,15 @@ void Kore_Graphics2_Graphics2_setFontColor(
 // TODO: mat3 to wrapped equiv
 // WC_Kore_Mat3* Kore_Graphics2_Graphics2_getTransformation(
 //	WC_Kore_Graphics2_Graphics2* self);
+void Kore_Graphics2_Graphics2_getTransformationValues(
+	WC_Kore_Graphics2_Graphics2* self,
+	KC_Mat3ValuesHelper* mat3ElementsOut);
+// TODO: mat3 to wrapped equiv
 // void Kore_Graphics2_Graphics2_setTransformation(
 //	WC_Kore_Graphics2_Graphics2* self, WC_Kore_Mat3* transformation);
+void Kore_Graphics2_Graphics2_setTransformationValues(
+	WC_Kore_Graphics2_Graphics2* self,
+	KC_Mat3ValuesHelper* mat3Elements);
 
 //   Kravur.h
 

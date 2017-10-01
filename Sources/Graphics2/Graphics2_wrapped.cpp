@@ -268,15 +268,23 @@ void Kore_Graphics2_Graphics2_setFontColor(
 // .. data accessors, TODO: Setter needed?
 // TODO: mat3 to wrapped equiv
 // WC_Kore_Mat3* Kore_Graphics2_Graphics2_getTransformation(
-// 	WC_Kore_Graphics2_Graphics2* self) {
+// 	WC_Kore_Graphics2_Graphics2* self) {}
 
-// }
+void Kore_Graphics2_Graphics2_getTransformationValues(
+	WC_Kore_Graphics2_Graphics2* self,
+	KC_Mat3ElementsHelper* mat3ElementsOut) {
+  // TODO: Copy self's transformation's values into mat3ElementsOut
+}
 
+// TODO: mat3 to wrapped equiv
 // void Kore_Graphics2_Graphics2_setTransformation(
-// 	WC_Kore_Graphics2_Graphics2* self, WC_Kore_Mat3* transformation) {
+// 	WC_Kore_Graphics2_Graphics2* self, WC_Kore_Mat3* transformation) {}
 
-// }
-
+void Kore_Graphics2_Graphics2_setTransformationValues(
+	WC_Kore_Graphics2_Graphics2* self,
+	KC_Mat3ElementsHelper* mat3Elements) {
+  // TODO: Create Kore::mat3 from mat3Elements, assign to self's transformation
+}
 
 
 /* Kore::Kravur */
