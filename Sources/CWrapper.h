@@ -249,16 +249,46 @@ void Kore_System_dropFilesCallback(wchar_t* filePath);
 /**** Math ****/
 
 // mat3 elements helper
-struct KC_Mat3ValuesHelper;
-typedef struct KC_Mat3ValuesHelper {
-	// TODO: matrix element fields
-} KC_Mat3ValuesHelper;
+struct KC_Mat3ElementsHelper;
+typedef struct KC_Mat3ElementsHelper {
+	// Row 0
+	float e00;
+	float e10;
+	float e20;
+	// Row 1
+	float e01;
+	float e11;
+	float e21;
+	// Row 2
+	float e02;
+	float e12;
+	float e22;
+} KC_Mat3ElementsHelper;
 
 // mat4 elements helper
-struct KC_Mat4ValuesHelper;
-typedef struct KC_Mat4ValuesHelper {
-	// TODO: matrix element fields
-} KC_Mat4ValuesHelper;
+struct KC_Mat4ElementsHelper;
+typedef struct KC_Mat4ElementsHelper {
+	// Row 0
+	float e00;
+	float e10;
+	float e20;
+	float e30;
+	// Row 1
+	float e01;
+	float e11;
+	float e21;
+	float e31;
+	// Row 2
+	float e02;
+	float e12;
+	float e22;
+	float e32;
+	// Row 3
+	float e03;
+	float e13;
+	float e23;
+	float e33;
+} KC_Mat4ElementsHelper;
 
 // Kore::Random
 void Kore_Random_init();
@@ -477,15 +507,15 @@ void Kore_Graphics2_Graphics2_setFontColor(
 // TODO: mat3 to wrapped equiv
 // WC_Kore_Mat3* Kore_Graphics2_Graphics2_getTransformation(
 //	WC_Kore_Graphics2_Graphics2* self);
-void Kore_Graphics2_Graphics2_getTransformationValues(
+void Kore_Graphics2_Graphics2_getTransformationElements(
 	WC_Kore_Graphics2_Graphics2* self,
-	KC_Mat3ValuesHelper* mat3ElementsOut);
+	KC_Mat3ElementsHelper* mat3ElementsOut);
 // TODO: mat3 to wrapped equiv
 // void Kore_Graphics2_Graphics2_setTransformation(
 //	WC_Kore_Graphics2_Graphics2* self, WC_Kore_Mat3* transformation);
-void Kore_Graphics2_Graphics2_setTransformationValues(
+void Kore_Graphics2_Graphics2_setTransformationElements(
 	WC_Kore_Graphics2_Graphics2* self,
-	KC_Mat3ValuesHelper* mat3Elements);
+	KC_Mat3ElementsHelper* mat3Elements);
 
 //   Kravur.h
 
@@ -1104,9 +1134,15 @@ void Kore_Graphics4_setFloats(
 // TODO: mat3 to wrapped equiv
 // void Kore_Graphics4_setMatrix3(
 // 	WC_Kore_Graphics4_ConstantLocation* location, mat3* value);
+void Kore_Graphics4_setMatrix3FromElements(
+	WC_Kore_Graphics4_ConstantLocation* location,
+	KC_Mat3ElementsHelper* mat3Elements);
 // TODO: mat4 to wrapped equiv
 // void Kore_Graphics4_setMatrix4(
 // 	WC_Kore_Graphics4_ConstantLocation* location, mat4* value);
+void Kore_Graphics4_setMatrix4FromElements(
+	WC_Kore_Graphics4_ConstantLocation* location,
+	KC_Mat4ElementsHelper* mat4Elements);
 
 void Kore_Graphics4_setVertexBuffer(
 	WC_Kore_Graphics4_VertexBuffer* vertexBuffer);

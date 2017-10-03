@@ -270,20 +270,28 @@ void Kore_Graphics2_Graphics2_setFontColor(
 // WC_Kore_Mat3* Kore_Graphics2_Graphics2_getTransformation(
 // 	WC_Kore_Graphics2_Graphics2* self) {}
 
-void Kore_Graphics2_Graphics2_getTransformationValues(
+void Kore_Graphics2_Graphics2_getTransformationElements(
 	WC_Kore_Graphics2_Graphics2* self,
 	KC_Mat3ElementsHelper* mat3ElementsOut) {
-  // TODO: Copy self's transformation's values into mat3ElementsOut
+  Kore::mat3* transform =
+    &(reinterpret_cast<Kore::Graphics2::Graphics2*>(self)->transformation);
+  mat3ElementsOut->e00 = transform->get(0, 0); mat3ElementsOut->e10 = transform->get(0, 1); mat3ElementsOut->e20 = transform->get(0, 2);
+	mat3ElementsOut->e01 = transform->get(1, 0); mat3ElementsOut->e11 = transform->get(1, 1); mat3ElementsOut->e21 = transform->get(1, 2);
+	mat3ElementsOut->e02 = transform->get(2, 0); mat3ElementsOut->e12 = transform->get(2, 1); mat3ElementsOut->e22 = transform->get(2, 2);
 }
 
 // TODO: mat3 to wrapped equiv
 // void Kore_Graphics2_Graphics2_setTransformation(
 // 	WC_Kore_Graphics2_Graphics2* self, WC_Kore_Mat3* transformation) {}
 
-void Kore_Graphics2_Graphics2_setTransformationValues(
+void Kore_Graphics2_Graphics2_setTransformationElements(
 	WC_Kore_Graphics2_Graphics2* self,
 	KC_Mat3ElementsHelper* mat3Elements) {
-  // TODO: Create Kore::mat3 from mat3Elements, assign to self's transformation
+  Kore::mat3* transform =
+    &(reinterpret_cast<Kore::Graphics2::Graphics2*>(self)->transformation);
+  transform->Set(0, 0, mat3Elements->e00); transform->Set(0, 1, mat3Elements->e10); transform->Set(0, 2, mat3Elements->e20);
+	transform->Set(1, 0, mat3Elements->e01); transform->Set(1, 1, mat3Elements->e11); transform->Set(1, 2, mat3Elements->e21);
+	transform->Set(2, 0, mat3Elements->e02); transform->Set(2, 1, mat3Elements->e12); transform->Set(2, 2, mat3Elements->e22);
 }
 
 

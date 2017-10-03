@@ -490,6 +490,16 @@ void Kore_Graphics4_setFloats(
 // 		*reinterpret_cast<Kore::Graphics4::ConstantLocation*>(location), *value);
 // 		//reinterpret_cast<KoreC::WConstantLocation4*>(location)->location, *value);
 // }
+void Kore_Graphics4_setMatrix3FromElements(
+	WC_Kore_Graphics4_ConstantLocation* location,
+	KC_Mat3ElementsHelper* mat3Elements) {
+	Kore::mat3 m;
+	m.Set(0, 0, mat3Elements->e00); m.Set(0, 1, mat3Elements->e10); m.Set(0, 2, mat3Elements->e20);
+	m.Set(1, 0, mat3Elements->e01); m.Set(1, 1, mat3Elements->e11); m.Set(1, 2, mat3Elements->e21);
+	m.Set(2, 0, mat3Elements->e02); m.Set(2, 1, mat3Elements->e12); m.Set(2, 2, mat3Elements->e22);
+	Kore:: Graphics4::setMatrix(
+		*reinterpret_cast<Kore::Graphics4::ConstantLocation*>(location), m);
+}
 
 // TODO:
 // void Kore_Graphics4_setMatrix4(
@@ -498,7 +508,17 @@ void Kore_Graphics4_setFloats(
 // 		*reinterpret_cast<Kore::Graphics4::ConstantLocation*>(location), *value);
 // 		//reinterpret_cast<KoreC::WConstantLocation4*>(location)->location, *value);
 // }
-
+void Kore_Graphics4_setMatrix4FromElements(
+	WC_Kore_Graphics4_ConstantLocation* location,
+	KC_Mat4ElementsHelper* mat4Elements) {
+	Kore::mat4 m;
+	m.Set(0, 0, mat4Elements->e00); m.Set(0, 1, mat4Elements->e10); m.Set(0, 2, mat4Elements->e20); m.Set(0, 3, mat4Elements->e30);
+	m.Set(1, 0, mat4Elements->e01); m.Set(1, 1, mat4Elements->e11); m.Set(1, 2, mat4Elements->e21); m.Set(1, 3, mat4Elements->e31);
+	m.Set(2, 0, mat4Elements->e02); m.Set(2, 1, mat4Elements->e12); m.Set(2, 2, mat4Elements->e22); m.Set(2, 3, mat4Elements->e32);
+	m.Set(3, 0, mat4Elements->e03); m.Set(3, 1, mat4Elements->e13); m.Set(3, 2, mat4Elements->e23); m.Set(3, 3, mat4Elements->e33);
+	Kore:: Graphics4::setMatrix(
+		*reinterpret_cast<Kore::Graphics4::ConstantLocation*>(location), m);
+}
 
 void Kore_Graphics4_setVertexBuffer(
 	WC_Kore_Graphics4_VertexBuffer* vertexBuffer) {
